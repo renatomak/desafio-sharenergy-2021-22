@@ -1,0 +1,36 @@
+:root {
+    --primary-color: #00a2a2;
+    --secondary-color: #D7DF23;
+    --secondary-light-color: #ddddaf;
+    --white: #FFF;
+    --gray: #28262b;
+}
+
+html, body {
+    height: 100%;
+    font-family: Montserrat, sans-serif;
+    letter-spacing: 1px;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.content {
+    flex: 1 0 auto;
+}
+
+.footer {
+    flex-shrink: 0;
+    text-align: center;
+}
+
+.bg-primary {
+    background-color: var(--primary-color) !important;
+}
+
+.text-primary {
+    color: var(--primary-color) !important;
+}
