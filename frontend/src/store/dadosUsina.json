@@ -1,0 +1,436 @@
+[
+    {
+      "tempo_h": 5.333333333333333,
+      "tensao_V": 550.9,
+      "corrente_A": 0,
+      "potencia_kW": 0,
+      "temperatura_C": 26.2
+    },
+    {
+      "tempo_h": 5.416666666666667,
+      "tensao_V": 623.2,
+      "corrente_A": 0,
+      "potencia_kW": 0,
+      "temperatura_C": 29.1
+    },
+    {
+      "tempo_h": 5.5,
+      "tensao_V": 635,
+      "corrente_A": 0,
+      "potencia_kW": 0.254,
+      "temperatura_C": 30.3
+    },
+    {
+      "tempo_h": 5.583333333333333,
+      "tensao_V": 578.2,
+      "corrente_A": 0,
+      "potencia_kW": 0.636,
+      "temperatura_C": 32.4
+    },
+    {
+      "tempo_h": 5.666666666666667,
+      "tensao_V": 577.7,
+      "corrente_A": 0,
+      "potencia_kW": 0.924,
+      "temperatura_C": 33.6
+    },
+    {
+      "tempo_h": 5.75,
+      "tensao_V": 612.7,
+      "corrente_A": 0,
+      "potencia_kW": 1.347,
+      "temperatura_C": 34.5
+    },
+    {
+      "tempo_h": 5.833333333333333,
+      "tensao_V": 630.7,
+      "corrente_A": 0.2,
+      "potencia_kW": 1.639,
+      "temperatura_C": 35.3
+    },
+    {
+      "tempo_h": 5.916666666666667,
+      "tensao_V": 625.2,
+      "corrente_A": 0.2,
+      "potencia_kW": 2,
+      "temperatura_C": 36.1
+    },
+    {
+      "tempo_h": 6,
+      "tensao_V": 642.2,
+      "corrente_A": 0.3,
+      "potencia_kW": 2.504,
+      "temperatura_C": 36.7
+    },
+    {
+      "tempo_h": 6.083333333333333,
+      "tensao_V": 647.2,
+      "corrente_A": 0.4,
+      "potencia_kW": 2.912,
+      "temperatura_C": 37.3
+    },
+    {
+      "tempo_h": 6.166666666666667,
+      "tensao_V": 651.2,
+      "corrente_A": 0.4,
+      "potencia_kW": 3.321,
+      "temperatura_C": 38
+    },
+    {
+      "tempo_h": 6.25,
+      "tensao_V": 655.2,
+      "corrente_A": 0.4,
+      "potencia_kW": 3.603,
+      "temperatura_C": 38.6
+    },
+    {
+      "tempo_h": 6.333333333333333,
+      "tensao_V": 661.2,
+      "corrente_A": 0.6,
+      "potencia_kW": 4.562,
+      "temperatura_C": 39.2
+    },
+    {
+      "tempo_h": 6.416666666666667,
+      "tensao_V": 664.2,
+      "corrente_A": 0.69,
+      "potencia_kW": 5.247,
+      "temperatura_C": 39.7
+    },
+    {
+      "tempo_h": 6.5,
+      "tensao_V": 666.9,
+      "corrente_A": 0.69,
+      "potencia_kW": 5.535,
+      "temperatura_C": 40.3
+    },
+    {
+      "tempo_h": 6.583333333333333,
+      "tensao_V": 670,
+      "corrente_A": 0.8,
+      "potencia_kW": 5.963,
+      "temperatura_C": 40.7
+    },
+    {
+      "tempo_h": 6.666666666666667,
+      "tensao_V": 669,
+      "corrente_A": 0.8,
+      "potencia_kW": 6.355,
+      "temperatura_C": 41.1
+    },
+    {
+      "tempo_h": 6.75,
+      "tensao_V": 673.5,
+      "corrente_A": 0.89,
+      "potencia_kW": 7.677,
+      "temperatura_C": 41.5
+    },
+    {
+      "tempo_h": 6.833333333333333,
+      "tensao_V": 676,
+      "corrente_A": 1.1,
+      "potencia_kW": 8.585,
+      "temperatura_C": 41.8
+    },
+    {
+      "tempo_h": 6.916666666666667,
+      "tensao_V": 677.59,
+      "corrente_A": 1.29,
+      "potencia_kW": 9.554,
+      "temperatura_C": 42.2
+    },
+    {
+      "tempo_h": 7,
+      "tensao_V": 679.2,
+      "corrente_A": 1.39,
+      "potencia_kW": 11.003,
+      "temperatura_C": 42.5
+    },
+    {
+      "tempo_h": 7.083333333333333,
+      "tensao_V": 678.79,
+      "corrente_A": 1.7,
+      "potencia_kW": 12.897,
+      "temperatura_C": 42.8
+    },
+    {
+      "tempo_h": 7.166666666666667,
+      "tensao_V": 677,
+      "corrente_A": 1.7,
+      "potencia_kW": 12.795,
+      "temperatura_C": 43.1
+    },
+    {
+      "tempo_h": 7.25,
+      "tensao_V": 666.29,
+      "corrente_A": 1.29,
+      "potencia_kW": 9.994,
+      "temperatura_C": 43.4
+    },
+    {
+      "tempo_h": 7.333333333333333,
+      "tensao_V": 684.9,
+      "corrente_A": 2.2,
+      "potencia_kW": 16.848,
+      "temperatura_C": 43.8
+    },
+    {
+      "tempo_h": 7.416666666666667,
+      "tensao_V": 678.79,
+      "corrente_A": 2.29,
+      "potencia_kW": 18.056,
+      "temperatura_C": 40
+    },
+    {
+      "tempo_h": 7.5,
+      "tensao_V": 676.4,
+      "corrente_A": 2.4,
+      "potencia_kW": 18.059,
+      "temperatura_C": 35.9
+    },
+    {
+      "tempo_h": 7.583333333333333,
+      "tensao_V": 672.5,
+      "corrente_A": 2.5,
+      "potencia_kW": 19.099,
+      "temperatura_C": 35.3
+    },
+    {
+      "tempo_h": 7.666666666666667,
+      "tensao_V": 676.2,
+      "corrente_A": 2.7,
+      "potencia_kW": 20.353,
+      "temperatura_C": 34.8
+    },
+    {
+      "tempo_h": 7.75,
+      "tensao_V": 681.59,
+      "corrente_A": 2.79,
+      "potencia_kW": 22.288,
+      "temperatura_C": 35.1
+    },
+    {
+      "tempo_h": 7.833333333333333,
+      "tensao_V": 662.79,
+      "corrente_A": 2.09,
+      "potencia_kW": 15.907,
+      "temperatura_C": 35.6
+    },
+    {
+      "tempo_h": 7.916666666666667,
+      "tensao_V": 648.2,
+      "corrente_A": 2.09,
+      "potencia_kW": 15.621,
+      "temperatura_C": 35.6
+    },
+    {
+      "tempo_h": 8,
+      "tensao_V": 684.09,
+      "corrente_A": 3.79,
+      "potencia_kW": 29.895,
+      "temperatura_C": 36
+    },
+    {
+      "tempo_h": 8.083333333333334,
+      "tensao_V": 682.4,
+      "corrente_A": 3.79,
+      "potencia_kW": 30.776,
+      "temperatura_C": 35.9
+    },
+    {
+      "tempo_h": 8.166666666666666,
+      "tensao_V": 664.29,
+      "corrente_A": 1.89,
+      "potencia_kW": 14.946,
+      "temperatura_C": 39.2
+    },
+    {
+      "tempo_h": 8.25,
+      "tensao_V": 663.4,
+      "corrente_A": 2.4,
+      "potencia_kW": 18.177,
+      "temperatura_C": 38.2
+    },
+    {
+      "tempo_h": 8.333333333333334,
+      "tensao_V": 693.5,
+      "corrente_A": 3.59,
+      "potencia_kW": 29.569,
+      "temperatura_C": 36.3
+    },
+    {
+      "tempo_h": 8.416666666666666,
+      "tensao_V": 656.9,
+      "corrente_A": 2.59,
+      "potencia_kW": 20.232,
+      "temperatura_C": 36.7
+    },
+    {
+      "tempo_h": 8.5,
+      "tensao_V": 658.29,
+      "corrente_A": 3.7,
+      "potencia_kW": 31.745,
+      "temperatura_C": 36.4
+    },
+    {
+      "tempo_h": 8.583333333333334,
+      "tensao_V": 657.09,
+      "corrente_A": 5.19,
+      "potencia_kW": 39.031,
+      "temperatura_C": 36.8
+    },
+    {
+      "tempo_h": 8.666666666666666,
+      "tensao_V": 653.7,
+      "corrente_A": 5.3,
+      "potencia_kW": 40.006,
+      "temperatura_C": 37.4
+    },
+    {
+      "tempo_h": 8.75,
+      "tensao_V": 649.4,
+      "corrente_A": 3.2,
+      "potencia_kW": 24.287,
+      "temperatura_C": 38.4
+    },
+    {
+      "tempo_h": 8.833333333333334,
+      "tensao_V": 671.09,
+      "corrente_A": 3.59,
+      "potencia_kW": 34.495,
+      "temperatura_C": 38.8
+    },
+    {
+      "tempo_h": 8.916666666666666,
+      "tensao_V": 658.79,
+      "corrente_A": 5.59,
+      "potencia_kW": 42.36,
+      "temperatura_C": 38.9
+    },
+    {
+      "tempo_h": 9,
+      "tensao_V": 641.4,
+      "corrente_A": 5.9,
+      "potencia_kW": 43.743,
+      "temperatura_C": 39.3
+    },
+    {
+      "tempo_h": 9.083333333333334,
+      "tensao_V": 647.79,
+      "corrente_A": 5.5,
+      "potencia_kW": 41.329,
+      "temperatura_C": 39.9
+    },
+    {
+      "tempo_h": 9.166666666666666,
+      "tensao_V": 652.79,
+      "corrente_A": 5.69,
+      "potencia_kW": 41.779,
+      "temperatura_C": 40.3
+    },
+    {
+      "tempo_h": 9.25,
+      "tensao_V": 649.29,
+      "corrente_A": 5.8,
+      "potencia_kW": 42.853,
+      "temperatura_C": 40.8
+    },
+    {
+      "tempo_h": 9.333333333333334,
+      "tensao_V": 648.2,
+      "corrente_A": 6,
+      "potencia_kW": 44.336,
+      "temperatura_C": 41.3
+    },
+    {
+      "tempo_h": 9.416666666666666,
+      "tensao_V": 642.09,
+      "corrente_A": 6.3,
+      "potencia_kW": 46.038,
+      "temperatura_C": 41.8
+    },
+    {
+      "tempo_h": 9.5,
+      "tensao_V": 649.7,
+      "corrente_A": 6.5,
+      "potencia_kW": 47.882,
+      "temperatura_C": 42.5
+    },
+    {
+      "tempo_h": 9.583333333333334,
+      "tensao_V": 644.9,
+      "corrente_A": 6.59,
+      "potencia_kW": 48.238,
+      "temperatura_C": 43.1
+    },
+    {
+      "tempo_h": 9.666666666666666,
+      "tensao_V": 639.29,
+      "corrente_A": 6.9,
+      "potencia_kW": 50.312,
+      "temperatura_C": 43.7
+    },
+    {
+      "tempo_h": 9.75,
+      "tensao_V": 642.4,
+      "corrente_A": 7.09,
+      "potencia_kW": 52.419,
+      "temperatura_C": 43.6
+    },
+    {
+      "tempo_h": 9.833333333333334,
+      "tensao_V": 633,
+      "corrente_A": 7.59,
+      "potencia_kW": 56.147,
+      "temperatura_C": 44.1
+    },
+    {
+      "tempo_h": 9.916666666666666,
+      "tensao_V": 619.29,
+      "corrente_A": 3.79,
+      "potencia_kW": 29.169,
+      "temperatura_C": 44.8
+    },
+    {
+      "tempo_h": 10,
+      "tensao_V": 629.09,
+      "corrente_A": 2.9,
+      "potencia_kW": 20.886,
+      "temperatura_C": 45.5
+    },
+    {
+      "tempo_h": 10.08333333333333,
+      "tensao_V": 669.9,
+      "corrente_A": 6.9,
+      "potencia_kW": 51.416,
+      "temperatura_C": 45.7
+    },
+    {
+      "tempo_h": 10.16666666666667,
+      "tensao_V": 644.09,
+      "corrente_A": 8.1,
+      "potencia_kW": 59.063,
+      "temperatura_C": 44.4
+    },
+    {
+      "tempo_h": 10.25,
+      "tensao_V": 644.4,
+      "corrente_A": 7.9,
+      "potencia_kW": 58.189,
+      "temperatura_C": 45.2
+    },
+    {
+      "tempo_h": 10.33333333333333,
+      "tensao_V": 662.29,
+      "corrente_A": 6.4,
+      "potencia_kW": 42.387,
+      "temperatura_C": 46
+    },
+    {
+      "tempo_h": 10.41666666666667,
+      "tensao_V": 632.59,
+      "corrente_A": 7.8,
+      "potencia_kW": 55.722,
+      "temperatura_C": 46.2
+    }
+  ]
