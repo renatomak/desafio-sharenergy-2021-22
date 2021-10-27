@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import dadosUsina from "store/dadosUsina.json";
 import Chart from "react-apexcharts";
-
+import ComponentCheckbox from "./RowRadioButtonsGroup";
 
 type SeriesData = {
   name: string;
@@ -16,6 +16,7 @@ type ChartData = {
 };
 
 const BarChart = () => {
+  const [userChoice, setUserChoice] = useState("tensao");
   const [chartData, setChartData] = useState<ChartData>({
     labels: {
       categories: [],
@@ -28,8 +29,6 @@ const BarChart = () => {
     ],
   });
 
-  console.log(dadosUsina)
-
   const options = {
     plotOptions: {
       bar: {
@@ -38,35 +37,40 @@ const BarChart = () => {
     },
   };
 
+  const getDatas = (variavel: string): void => {
+    const myData = dadosUsina.map((item) => {
+      if (variavel === "corrente") return Number(item.corrente_A.toFixed(2));
+      if (variavel === "potencia") return Number(item.potencia_kW.toFixed(2));
+      if (variavel === "temperatura")
+        return Number(item.temperatura_C.toFixed(2));
+      return Number(item.tensao_V.toFixed(2));
+    });
 
-   const getDatas = (userChoice = "tensao_V"): void => {
-     const myData = dadosUsina.map((item) => {
-       if (userChoice === "corrente_A") return  Number(item.corrente_A.toFixed(2));
-       if (userChoice === "potencia_kW") return  Number(item.potencia_kW.toFixed(2));
-       if (userChoice === "temperatura_C") return  Number(item.temperatura_C.toFixed(2));
-       
-       return  Number(item.tensao_V.toFixed(2));
-     });
-     
-      setChartData({
-        labels: {
-          categories: dadosUsina.map((item) => item.tempo_h.toFixed(2)),
+    console.log(`variavel === "corrente"`, variavel === "corrente");
+    console.log(myData);
+
+    setChartData({
+      labels: {
+        categories: dadosUsina.map(
+          (item) => item.tempo_h.toFixed(2).replace(".", "h ") + "m"
+        ),
+      },
+      series: [
+        {
+          name: variavel,
+          data: myData,
         },
-        series: [
-          {
-            name: userChoice,
-            data: myData,
-          },
-        ],
-      });
+      ],
+    });
   };
 
   useEffect(() => {
-    getDatas();
-  }, []);
-
+    getDatas(userChoice);
+  }, [userChoice]);
 
   return (
+    <>
+      <ComponentCheckbox choice={setUserChoice} />
       <Chart
         options={{ ...options, xaxis: chartData.labels }}
         series={chartData.series}
@@ -74,6 +78,7 @@ const BarChart = () => {
         height="390"
         width="1200"
       />
+    </>
   );
 };
 
