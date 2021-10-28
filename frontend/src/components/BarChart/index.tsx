@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import dadosUsina from "store/dadosUsina.json";
 import Chart from "react-apexcharts";
 import ComponentCheckbox from "./RowRadioButtonsGroup";
+import { red } from "@material-ui/core/colors";
 
 type SeriesData = {
   name: string;
@@ -46,9 +47,6 @@ const BarChart = () => {
       return Number(item.tensao_V.toFixed(2));
     });
 
-    console.log(`variavel === "corrente"`, variavel === "corrente");
-    console.log(myData);
-
     setChartData({
       labels: {
         categories: dadosUsina.map(
@@ -77,6 +75,7 @@ const BarChart = () => {
         type="area"
         height="390"
         width="1200"
+        style={{color: 'green'}}
       />
     </>
   );
