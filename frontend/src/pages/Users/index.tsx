@@ -12,16 +12,16 @@ export default function FormPropsTextFields() {
       <br />
 
       <Stack direction="row" spacing={2}>
-        <Button variant="contained" color="success" href="/users/add">
+        <Button variant="contained" color="success" href="/users/user">
           Adicionar Usuário
         </Button>
-        <Button variant="contained" color="warning" href="/users/add">
+        <Button variant="contained" color="warning" href="/users/user">
           Visualizar
         </Button>
-        <Button variant="contained" color="primary" href="/users/add">
+        <Button variant="contained" color="primary" href="/users/user">
           Atualizar
         </Button>
-        <Button variant="contained" color="error" href="/users/add">
+        <Button variant="contained" color="error" href="/users/user">
           Excluir
         </Button>
       </Stack>
