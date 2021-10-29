@@ -1,4 +1,4 @@
-export type UserUsina = {
+export type Usinas = {
   usinaId: number;
   percentualDeParticipacao: number;
 };

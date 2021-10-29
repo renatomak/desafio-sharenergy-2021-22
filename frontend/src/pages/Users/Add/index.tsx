@@ -1,9 +1,11 @@
 import { TextField } from "@material-ui/core";
 import { Box } from "@material-ui/system";
 import { Button } from "components/components.styleds";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { Cliente } from "types/cliente";
 import { User } from "types/user";
-import { UserUsina } from "types/userUsina";
+import { Usinas } from "types/usinas";
+
 
 export default function AddUser() {
   const [user, setUser] = useState<User>({
@@ -11,10 +13,19 @@ export default function AddUser() {
     nomeCliente: "",
   });
 
-  const [usina, setUsina] = useState<UserUsina>({
+  const [usina, setUsina] = useState<Usinas>({
     usinaId: 0,
     percentualDeParticipacao: 0,
   });
+
+  const [cliente, setCliente] = useState<Cliente>({
+    user: user,
+    usinas: [usina],
+  });
+
+  useEffect(() => {
+    setCliente({ user, usinas: [ usina ] });
+  }, [user, usina]);
 
   return (
     <>
@@ -76,7 +87,9 @@ export default function AddUser() {
         </div>
       </Box>
 
-      <Button className="btn-main">Cadastrar</Button>
+      <Button className="btn-main" onClick={() => console.log(cliente)}>
+        Cadastrar
+      </Button>
     </>
   );
 }
