@@ -6,8 +6,8 @@ export const Header = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 0 20px;
   font-weight: 400;
+  background-color: var(--white);
 `;
 
 export const Img = styled.img`
