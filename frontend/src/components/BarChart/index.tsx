@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import dadosUsina from "store/dadosUsina.json";
 import Chart from "react-apexcharts";
 import ComponentCheckbox from "./RowRadioButtonsGroup";
-import { red } from "@material-ui/core/colors";
 
 type SeriesData = {
   name: string;

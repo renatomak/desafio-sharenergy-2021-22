@@ -11,7 +11,10 @@ const Home = () => {
         fotovoltaico!
       </h3>
       <a href="/dashboard">
-        <Button className="btn-main">Quero usar energia solar!</Button>
+        <Button className="btn-main">Visualizar dados</Button>
+      </a>
+      <a href="/users">
+        <Button className="btn-main">Gerenciamento de Clientes</Button>
       </a>
     </Container>
   );

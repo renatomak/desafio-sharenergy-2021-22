@@ -5,11 +5,9 @@ const Dashboard = () => {
   return (
       <Container>
         <h1 className="text-primary py-3">Dashboard </h1>
-        <div>
           <div>
             <BarChart />
           </div>
-        </div>
       </Container>
   );
 };
