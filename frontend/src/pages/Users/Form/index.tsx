@@ -1,6 +1,6 @@
 import { Button, Stack, TextField } from "@material-ui/core";
 import { Box } from "@material-ui/system";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import SherenergyContext, {
   initialSateUsina,
   initialStateCliente,
@@ -44,7 +44,11 @@ export default function Form(this: any) {
   };
 
   const updateCliente = (): void => {
-    console.log(cliente);
+    const listClientes = clientes.filter((item) => cliente.numeroCliente !== item.numeroCliente);
+    const newListClientes = [cliente, ...listClientes].sort((a, b) => a.numeroCliente - b.numeroCliente);
+
+    setClientes(newListClientes);
+    clearInputs();
   };
 
   const clearInputs = (): void => {
