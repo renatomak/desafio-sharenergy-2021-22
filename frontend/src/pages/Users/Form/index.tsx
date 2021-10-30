@@ -8,15 +8,17 @@ import SherenergyContext, {
 import { Container } from "./styled";
 
 export default function Form(this: any) {
-  const { clientes, setClientes, cliente, setCliente, usina, setUsina } =
-    useContext(SherenergyContext);
-  const [idCliente, setIdCliente] = useState(0);
-
-  useEffect(() => {
-    const id =
-      clientes.map((item) => item.numeroCliente).sort((a, b) => b - a)[0] + 1;
-    setIdCliente(id);
-  }, [clientes]);
+  const {
+    clientes,
+    setClientes,
+    cliente,
+    setCliente,
+    usina,
+    setUsina,
+    idCliente,
+    getNextId,
+    setIdCliente,
+  } = useContext(SherenergyContext);
 
   console.log("ID: ", idCliente);
 
@@ -38,9 +40,18 @@ export default function Form(this: any) {
 
   const addCliente = (): void => {
     setClientes([...clientes, cliente]);
-    setIdCliente(idCliente + 1);
+    clearInputs();
+  };
+
+  const updateCliente = (): void => {
+    console.log(cliente);
+  };
+
+  const clearInputs = (): void => {
     setCliente(initialStateCliente);
     setUsina(initialSateUsina);
+    setIdCliente(getNextId);
+    console.log(idCliente, clientes.length);
   };
 
   return (
@@ -97,13 +108,13 @@ export default function Form(this: any) {
       </Box>
 
       <Stack direction="row" spacing={2}>
+        <Button variant="contained" color="warning" onClick={clearInputs}>
+          Limpar
+        </Button>
         <Button variant="contained" color="success" onClick={addCliente}>
           Adicionar
         </Button>
-        <Button variant="contained" color="warning" href="/users/user">
-          Visualizar
-        </Button>
-        <Button variant="contained" color="primary" href="/users/user">
+        <Button variant="contained" color="primary" onClick={updateCliente}>
           Atualizar
         </Button>
         <Button variant="contained" color="error" href="/users/user">

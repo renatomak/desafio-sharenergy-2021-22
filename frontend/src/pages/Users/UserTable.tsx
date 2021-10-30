@@ -36,7 +36,7 @@ function createData(code: string, name: string, usinas: string): Data {
 }
 
 export default function StickyHeadTable() {
-  const { clientes, setCliente, setUsina } =
+  const { clientes, setCliente, setUsina, setIdCliente } =
     React.useContext(SherenergyContext);
 
   const [page, setPage] = React.useState(0);
@@ -73,6 +73,7 @@ export default function StickyHeadTable() {
 
     setCliente(selected[0]);
     setUsina(usinas[0]);
+    setIdCliente(selected[0].numeroCliente);
   };
 
   return (
