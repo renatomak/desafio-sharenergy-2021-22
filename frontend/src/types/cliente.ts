@@ -1,7 +1,7 @@
-import { User } from "./user";
 import { Usinas } from "./usinas";
 
 export type Cliente = {
-  user: User;
+  numeroCliente: number;
+  nomeCliente: string;
   usinas: Usinas[];
 };

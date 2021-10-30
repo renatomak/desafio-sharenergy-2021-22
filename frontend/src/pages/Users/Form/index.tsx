@@ -1,31 +1,29 @@
 import { TextField } from "@material-ui/core";
 import { Box } from "@material-ui/system";
 import { Button } from "components/components.styleds";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
+import SherenergyContext from "store/context/context";
 import { Cliente } from "types/cliente";
-import { User } from "types/user";
 import { Usinas } from "types/usinas";
 
+// TODO: Criar restrinções para os campos númericos. Ex: não aceitar números negativos, ou ids repetidos. 
 
-export default function AddUser() {
-  const [user, setUser] = useState<User>({
-    numeroCliente: 0,
-    nomeCliente: "",
-  });
-
+export default function Form() {
   const [usina, setUsina] = useState<Usinas>({
     usinaId: 0,
     percentualDeParticipacao: 0,
   });
 
   const [cliente, setCliente] = useState<Cliente>({
-    user: user,
+    numeroCliente: 0,
+    nomeCliente: "",
     usinas: [usina],
   });
 
-  useEffect(() => {
-    setCliente({ user, usinas: [ usina ] });
-  }, [user, usina]);
+  const { clientes, setClientes } = useContext(SherenergyContext);
+
+  console.log('TESTANDO O CONTEXT: ', clientes);
+
 
   return (
     <>
@@ -40,22 +38,22 @@ export default function AddUser() {
         <div>
           <TextField
             name="numeroCliente"
-            value={user.numeroCliente}
+            value={cliente.numeroCliente}
             id="numeroCliente"
             label="Número do Cliente"
             type="number"
             onChange={(event) =>
-              setUser({ ...user, numeroCliente: parseInt(event.target.value) })
+              setCliente({ ...cliente, numeroCliente: parseInt(event.target.value) })
             }
           />
           <TextField
             name="nomeCliente"
-            value={user.nomeCliente}
+            value={cliente.nomeCliente}
             id="nomeCliente"
             label="Nome"
             type="text"
             onChange={(event) =>
-              setUser({ ...user, nomeCliente: event.target.value })
+              setCliente({ ...cliente, nomeCliente: event.target.value })
             }
           />
         </div>
@@ -87,7 +85,7 @@ export default function AddUser() {
         </div>
       </Box>
 
-      <Button className="btn-main" onClick={() => console.log(cliente)}>
+      <Button className="btn-main" onClick={() => setClientes([...clientes, cliente])}>
         Cadastrar
       </Button>
     </>

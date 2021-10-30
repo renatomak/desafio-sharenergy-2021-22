@@ -1,6 +1,5 @@
 import { Button, Stack } from "@material-ui/core";
 import * as React from "react";
-import { Link } from "react-router-dom";
 import { Container } from "./styled";
 import UserTable from "./UserTable";
 
