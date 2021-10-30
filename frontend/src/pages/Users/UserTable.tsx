@@ -9,7 +9,7 @@ import {
   TableRow,
 } from "@material-ui/core";
 import * as React from "react";
-import dadosClientes from "store/dadosClientes.json";
+import SherenergyContext from "store/context/context";
 
 interface Column {
   id: "name" | "code" | "usinas";
@@ -20,7 +20,7 @@ interface Column {
 }
 
 const columns: readonly Column[] = [
-  { id: "code", label: "Número", minWidth: 100 },
+  { id: "code", label: "Número", minWidth: 50 },
   { id: "name", label: "Name", minWidth: 170 },
   { id: "usinas", label: "Códigos das Usinas", minWidth: 170 },
 ];
@@ -28,22 +28,22 @@ const columns: readonly Column[] = [
 interface Data {
   code: string;
   name: string;
-  usinas: Array<number>;
+  usinas: string;
 }
 
-function createData(code: string, name: string, usinas:  Array<number> = []): Data {
+function createData(
+  code: string,
+  name: string,
+  usinas: string,
+): Data {
   return { name, code, usinas };
 }
 
-const rows = dadosClientes.map(({numeroCliente, nomeCliente, usinas}) => {
-  const arrayUsinas = usinas.map((elem) => elem.usinaId);
-  return createData(String(numeroCliente), nomeCliente, arrayUsinas);
-})
-
-
 export default function StickyHeadTable() {
+  const { clientes } = React.useContext(SherenergyContext);
+
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
   const handleChangePage = (event: unknown, newPage: number) => {
     setPage(newPage);
@@ -55,6 +55,12 @@ export default function StickyHeadTable() {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
+
+  const rows = clientes?.map(({ numeroCliente, nomeCliente, usinas }) => {
+    console.log('Ver Usinas: ', usinas)
+    const usinaIds = usinas.reduce((acc, elem) => acc += ' ' +elem.usinaId +',', '');
+    return createData(String(numeroCliente), nomeCliente, usinaIds.substr(0, usinaIds.length -1));
+  });
 
   return (
     <Paper sx={{ width: "100%", overflow: "hidden" }}>
@@ -96,7 +102,7 @@ export default function StickyHeadTable() {
         </Table>
       </TableContainer>
       <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
+        rowsPerPageOptions={[5, 5, 20]}
         component="div"
         count={rows.length}
         rowsPerPage={rowsPerPage}

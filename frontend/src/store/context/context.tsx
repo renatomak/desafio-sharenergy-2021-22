@@ -35,7 +35,7 @@ const SherenergyContextProvider: React.FC = ({ children }) => {
   }
 
   useEffect(() => {
-    iniciarListaClientes();
+      iniciarListaClientes();    
   }, []);
 
   return (

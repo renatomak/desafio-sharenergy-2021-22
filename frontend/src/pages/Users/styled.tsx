@@ -7,11 +7,8 @@ export const Container = styled.div`
     justify-content: center;
     color: var(--white);
     
-    h1 {
-        font-weight: 400;
-        text-shadow: 0px 1px 1px rgb(0 0 0 / 40%);
-        padding: 0;
-        font-size: 64px;
+    h3 {
+        margin-top: 20px;
     }
 `;
 export const Div = styled.div``;
