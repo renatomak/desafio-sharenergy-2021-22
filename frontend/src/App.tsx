@@ -1,11 +1,12 @@
 import React from "react";
+import GlobalContext from "store/context";
 import Routes from "./Routes";
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div>
+    <GlobalContext>
       <Routes />
-    </div>
+    </GlobalContext>
   );
 }
 
