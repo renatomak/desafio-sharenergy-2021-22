@@ -55,8 +55,13 @@ export default function Form(this: any) {
     setCliente(initialStateCliente);
     setUsina(initialSateUsina);
     setIdCliente(getNextId);
-    console.log(idCliente, clientes.length);
   };
+
+  const deleteCliente = (): void => {
+    console.log(cliente);
+    const listClientes = clientes.filter((item) => cliente.numeroCliente !== item.numeroCliente);
+    setClientes(listClientes);
+  }
 
   return (
     <Container>
@@ -121,7 +126,7 @@ export default function Form(this: any) {
         <Button variant="contained" color="primary" onClick={updateCliente}>
           Atualizar
         </Button>
-        <Button variant="contained" color="error" href="/users/user">
+        <Button variant="contained" color="error" onClick={deleteCliente}>
           Excluir
         </Button>
       </Stack>
