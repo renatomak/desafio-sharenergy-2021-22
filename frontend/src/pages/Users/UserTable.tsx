@@ -31,16 +31,13 @@ interface Data {
   usinas: string;
 }
 
-function createData(
-  code: string,
-  name: string,
-  usinas: string,
-): Data {
+function createData(code: string, name: string, usinas: string): Data {
   return { name, code, usinas };
 }
 
 export default function StickyHeadTable() {
-  const { clientes } = React.useContext(SherenergyContext);
+  const { clientes, setCliente, setUsina } =
+    React.useContext(SherenergyContext);
 
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
@@ -57,10 +54,26 @@ export default function StickyHeadTable() {
   };
 
   const rows = clientes?.map(({ numeroCliente, nomeCliente, usinas }) => {
-    console.log('Ver Usinas: ', usinas)
-    const usinaIds = usinas.reduce((acc, elem) => acc += ' ' +elem.usinaId +',', '');
-    return createData(String(numeroCliente), nomeCliente, usinaIds.substr(0, usinaIds.length -1));
+    const usinaIds = usinas.reduce(
+      (acc, elem) => (acc += " " + elem.usinaId + ","),
+      ""
+    );
+    return createData(
+      String(numeroCliente),
+      nomeCliente,
+      usinaIds.substr(0, usinaIds.length - 1)
+    );
   });
+
+  const selectRow = (data: any) => {
+    const selected = clientes.filter((item) => {
+      if (parseInt(data.code) === item.numeroCliente) return item;
+    });
+    const { usinas } = selected[0];
+
+    setCliente(selected[0]);
+    setUsina(usinas[0]);
+  };
 
   return (
     <Paper sx={{ width: "100%", overflow: "hidden" }}>
@@ -83,12 +96,17 @@ export default function StickyHeadTable() {
             {rows
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row) => {
+                // console.log(row)
                 return (
                   <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
                     {columns.map((column) => {
                       const value = row[column.id];
                       return (
-                        <TableCell key={column.id} align={column.align}>
+                        <TableCell
+                          key={column.id}
+                          align={column.align}
+                          onClick={() => selectRow(row)}
+                        >
                           {column.format && typeof value === "number"
                             ? column.format(value)
                             : value}

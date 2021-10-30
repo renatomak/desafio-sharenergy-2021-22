@@ -1,49 +1,47 @@
 import { Button, Stack, TextField } from "@material-ui/core";
 import { Box } from "@material-ui/system";
 import React, { useContext, useEffect, useState } from "react";
-import SherenergyContext from "store/context/context";
-import { Cliente } from "types/cliente";
-import { Usinas } from "types/usinas";
+import SherenergyContext, {
+  initialSateUsina,
+  initialStateCliente,
+} from "store/context/context";
 import { Container } from "./styled";
 
-// TODO: Criar restrinções para os campos númericos. Ex: não aceitar números negativos, ou ids repetidos. 
-
 export default function Form(this: any) {
-  const [usina, setUsina] = useState<Usinas>({
-    usinaId: 0,
-    percentualDeParticipacao: 0,
-  });
-
-  const [cliente, setCliente] = useState<Cliente>({
-    numeroCliente: 0,
-    nomeCliente: "",
-    usinas: [usina],
-  });
-
-  const { clientes, setClientes } = useContext(SherenergyContext);
-
-  console.log('TESTANDO O CONTEXT: ', clientes);
-
+  const { clientes, setClientes, cliente, setCliente, usina, setUsina } =
+    useContext(SherenergyContext);
+  const [idCliente, setIdCliente] = useState(0);
 
   useEffect(() => {
-    setCliente({...cliente, usinas: [usina]})
+    const id =
+      clientes.map((item) => item.numeroCliente).sort((a, b) => b - a)[0] + 1;
+    setIdCliente(id);
+  }, [clientes]);
+
+  console.log("ID: ", idCliente);
+
+  useEffect(() => {
+    setCliente({ ...cliente, usinas: [usina], numeroCliente: idCliente });
   }, [usina]);
 
-  const handleChangeCliente = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    const {value, name} = e.target;
-    setCliente({ ...cliente, [name]: value })
-  }
+  const handleChangeCliente = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ): void => {
+    const { value, name } = e.target;
+    setCliente({ ...cliente, [name]: value });
+  };
 
   const handleChangeUsina = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    const {value, name} = e.target;
-    setUsina({ ...usina, [name]: value })
-  }
+    const { value, name } = e.target;
+    setUsina({ ...usina, [name]: value });
+  };
 
   const addCliente = (): void => {
     setClientes([...clientes, cliente]);
-    console.log(cliente)
-    console.log(clientes)
-  }
+    setIdCliente(idCliente + 1);
+    setCliente(initialStateCliente);
+    setUsina(initialSateUsina);
+  };
 
   return (
     <Container>
@@ -56,11 +54,14 @@ export default function Form(this: any) {
         <Stack direction="row" spacing={2}>
           <TextField
             name="numeroCliente"
-            value={cliente.numeroCliente}
+            value={idCliente}
             id="numeroCliente"
             label="Número do Cliente"
             type="number"
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChangeCliente(e)}
+            disabled
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              handleChangeCliente(e)
+            }
           />
           <TextField
             name="nomeCliente"
@@ -72,7 +73,7 @@ export default function Form(this: any) {
           />
           <TextField
             name="usinaId"
-            value={usina.usinaId}
+            value={usina.usinaId >= 0 ? usina.usinaId : 0}
             id="usinaId"
             label="Código da Usina"
             type="number"
@@ -80,11 +81,17 @@ export default function Form(this: any) {
           />
           <TextField
             name="percentualDeParticipacao"
-            value={usina.percentualDeParticipacao}
+            value={
+              usina.percentualDeParticipacao >= 0
+                ? usina.percentualDeParticipacao
+                : 0
+            }
             id="percentualDeParticipacao"
             label="Percentual de participacao"
             type="number"
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChangeUsina(e)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              handleChangeUsina(e)
+            }
           />
         </Stack>
       </Box>
