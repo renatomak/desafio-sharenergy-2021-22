@@ -7,10 +7,7 @@ const Home = () => {
   return (
     <Container>
       <h1 className="h1-main">Economize com a Energia Solar!</h1>
-      <h3>
-        Clique no botão abaixo e obtenha já uma cotação do seu sistema
-        fotovoltaico!
-      </h3>
+      <h3>Clique nos botões abaixo e análise ou gerencie seus dados</h3>
       <a href={DATAANALYSIS}>
         <Button className="btn-main">Análise - Produção Diária</Button>
       </a>
