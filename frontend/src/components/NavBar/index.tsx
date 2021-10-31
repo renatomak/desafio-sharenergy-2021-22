@@ -18,9 +18,9 @@ const NavBar = () => {
             </Button>
             <UlMenu id="menu">
                 <li><ALink href="/">INÍCIO</ALink></li>
-                <li><ALink href="/dashboard">DASHBOARD</ALink></li>
+                <li><ALink href="/data-analysis">PRODUÇÃO DIÁRIA</ALink></li>
                 <li><ALink href="/users">CLIENTES</ALink></li>
-                <li><ALink href="/">CONTATO</ALink></li>
+                <li><ALink href="/financial-statement">DEMONSTRATIVOS</ALink></li>
                 <li><ALink href="/">BLOG</ALink></li>
                 <Button type="button" className="btn-lg">ORÇAMENTO</Button>
             </UlMenu>

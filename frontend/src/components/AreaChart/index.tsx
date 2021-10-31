@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import dadosUsina from "store/dadosUsina.json";
 import Chart from "react-apexcharts";
 import ComponentCheckbox from "./RowRadioButtonsGroup";
+import { ContainerChart } from "./styled";
 
 type SeriesData = {
   name: string;
@@ -15,7 +16,7 @@ type ChartData = {
   series: SeriesData[];
 };
 
-const BarChart = () => {
+const AreaChart = () => {
   const [userChoice, setUserChoice] = useState("tensao");
   const [chartData, setChartData] = useState<ChartData>({
     labels: {
@@ -87,16 +88,19 @@ const BarChart = () => {
   return (
     <>
       <ComponentCheckbox choice={setUserChoice} />
-      <Chart
-        options={{ ...options, xaxis: chartData.labels }}
-        series={chartData.series}
-        type="area"
-        height="390"
-        width="1200"
-        style={{ color: "green" }}
-      />
+      <ContainerChart>
+        <h3 className="text-primary">Produção diária da usina</h3>
+        <Chart
+          options={{ ...options, xaxis: chartData.labels }}
+          series={chartData.series}
+          type="area"
+          height="390"
+          width="1200"
+          style={{ color: "green" }}
+        />
+      </ContainerChart>
     </>
   );
 };
 
-export default BarChart;
+export default AreaChart;
