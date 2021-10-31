@@ -1,6 +1,6 @@
 import { Usina } from "./usina";
 
-export type Cliente = {
+export type Customer = {
   numeroCliente: number;
   nomeCliente: string;
   rendimento: number;

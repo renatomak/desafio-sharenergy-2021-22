@@ -1,4 +1,4 @@
-import { Cliente } from "types/cliente";
+import { Customer } from "types/customer";
 import { Usinas } from "types/usinas";
 
 export const calculateDeltaTime = (data: Array<Usinas>): number => {
@@ -24,8 +24,8 @@ export const calculateTotalIncome = (data: Array<Usinas>): number =>
 export const customerDailyIncome = (
   idUsina: number,
   usinas: Array<Usinas>,
-  cleintes: Array<Cliente>
-): Array<Cliente> => {
+  cleintes: Array<Customer>
+): Array<Customer> => {
 
   const totalIncome = calculateTotalIncome(usinas);
 

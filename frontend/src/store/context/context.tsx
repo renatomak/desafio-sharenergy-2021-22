@@ -2,18 +2,18 @@ import { customerDailyIncome } from "pages/Users/FinancialStatement/AuxiliaryFun
 import React, { createContext, useEffect, useState } from "react";
 import dadosClientes from "store/dadosClientes.json";
 import dadosUsina from "store/dadosUsina.json";
-import { Cliente } from "types/cliente";
+import { Customer } from "types/customer";
 import { Usina } from "types/usina";
 
 type PropsClientContext = {
-  clientes: Cliente[];
-  setClientes: (data: Cliente[]) => void;
-  cliente: Cliente;
-  setCliente: (data: Cliente) => void;
+  customers: Customer[];
+  setCustomers: (data: Customer[]) => void;
+  customer: Customer;
+  setCustomer: (data: Customer) => void;
   usina: Usina;
   setUsina: (data: Usina) => void;
-  idCliente: number;
-  setIdCliente: (data: number) => void;
+  idCustomer: number;
+  setIdCustomer: (data: number) => void;
   getNextId: number;
 };
 
@@ -32,24 +32,24 @@ export const initialStateCliente = {
 };
 
 export const DEFAULT_VALUE = {
-  clientes: [initialStateCliente],
-  setClientes: (data: Cliente[]) => {},
-  cliente: initialStateCliente,
-  setCliente: (data: Cliente) => {},
+  customers: [initialStateCliente],
+  setCustomers: (data: Customer[]) => {},
+  customer: initialStateCliente,
+  setCustomer: (data: Customer) => {},
   usina: initialSateUsina,
   setUsina: (data: Usina) => {},
-  idCliente: 0,
-  setIdCliente: (data: number) => {},
+  idCustomer: 0,
+  setIdCustomer: (data: number) => {},
   getNextId: 0,
 };
 
 const SherenergyContext = createContext<PropsClientContext>(DEFAULT_VALUE);
 
 const SherenergyContextProvider: React.FC = ({ children }) => {
-  const [clientes, setClientes] = useState(DEFAULT_VALUE.clientes);
-  const [cliente, setCliente] = useState(DEFAULT_VALUE.cliente);
+  const [customers, setCustomers] = useState(DEFAULT_VALUE.customers);
+  const [customer, setCustomer] = useState(DEFAULT_VALUE.customer);
   const [usina, setUsina] = useState(DEFAULT_VALUE.usina);
-  const [idCliente, setIdCliente] = useState(DEFAULT_VALUE.idCliente);
+  const [idCustomer, setIdCustomer] = useState(DEFAULT_VALUE.idCustomer);
 
 
   const iniciarListaClientes = () => {
@@ -58,28 +58,28 @@ const SherenergyContextProvider: React.FC = ({ children }) => {
       return newCustomer;
     });
     const NewCustomers = customerDailyIncome(1, dadosUsina, customers);
-    setClientes(NewCustomers);
+    setCustomers(NewCustomers);
   };
 
   useEffect(() => {
     iniciarListaClientes();
   }, []);
 
-  const getNextId = clientes.map((item) => item.numeroCliente).sort((a, b) => b - a)[0] + 1;
+  const getNextId = customers.map((item) => item.numeroCliente).sort((a, b) => b - a)[0] + 1;
 
   useEffect(() => {     
-    setIdCliente(getNextId);
-  }, [clientes, getNextId]);
+    setIdCustomer(getNextId);
+  }, [customers, getNextId]);
 
   const context = {
-    cliente,
-    setCliente,
-    clientes,
-    setClientes,
+    customer,
+    setCustomer,
+    customers,
+    setCustomers,
     usina,
     setUsina,
-    idCliente,
-    setIdCliente,
+    idCustomer,
+    setIdCustomer,
     getNextId,
   };
 

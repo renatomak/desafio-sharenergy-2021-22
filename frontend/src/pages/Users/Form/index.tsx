@@ -9,28 +9,28 @@ import { Container } from "./styled";
 
 export default function Form(this: any) {
   const {
-    clientes,
-    setClientes,
-    cliente,
-    setCliente,
+    customers,
+    setCustomers,
+    customer,
+    setCustomer,
     usina,
     setUsina,
-    idCliente,
+    idCustomer,
     getNextId,
-    setIdCliente,
+    setIdCustomer,
   } = useContext(SherenergyContext);
 
-  console.log("ID: ", idCliente);
+  console.log("ID: ", idCustomer);
 
   useEffect(() => {
-    setCliente({ ...cliente, usinas: [usina], numeroCliente: idCliente });
+    setCustomer({ ...customer, usinas: [usina], numeroCliente: idCustomer });
   }, [usina]);
 
   const handleChangeCliente = (
     e: React.ChangeEvent<HTMLInputElement>
   ): void => {
     const { value, name } = e.target;
-    setCliente({ ...cliente, [name]: value });
+    setCustomer({ ...customer, [name]: value });
   };
 
   const handleChangeUsina = (e: React.ChangeEvent<HTMLInputElement>): void => {
@@ -39,28 +39,28 @@ export default function Form(this: any) {
   };
 
   const addCliente = (): void => {
-    setClientes([...clientes, cliente]);
+    setCustomers([...customers, customer]);
     clearInputs();
   };
 
   const updateCliente = (): void => {
-    const listClientes = clientes.filter((item) => cliente.numeroCliente !== item.numeroCliente);
-    const newListClientes = [cliente, ...listClientes].sort((a, b) => a.numeroCliente - b.numeroCliente);
+    const listClientes = customers.filter((item) => customer.numeroCliente !== item.numeroCliente);
+    const newListClientes = [customer, ...listClientes].sort((a, b) => a.numeroCliente - b.numeroCliente);
 
-    setClientes(newListClientes);
+    setCustomers(newListClientes);
     clearInputs();
   };
 
   const clearInputs = (): void => {
-    setCliente(initialStateCliente);
+    setCustomer(initialStateCliente);
     setUsina(initialSateUsina);
-    setIdCliente(getNextId);
+    setIdCustomer(getNextId);
   };
 
   const deleteCliente = (): void => {
-    console.log(cliente);
-    const listClientes = clientes.filter((item) => cliente.numeroCliente !== item.numeroCliente);
-    setClientes(listClientes);
+    console.log(customer);
+    const listClientes = customers.filter((item) => customer.numeroCliente !== item.numeroCliente);
+    setCustomers(listClientes);
   }
 
   return (
@@ -74,9 +74,9 @@ export default function Form(this: any) {
         <Stack direction="row" spacing={2}>
           <TextField
             name="numeroCliente"
-            value={idCliente}
+            value={idCustomer}
             id="numeroCliente"
-            label="Número do Cliente"
+            label="Número do Customer"
             type="number"
             disabled
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -85,7 +85,7 @@ export default function Form(this: any) {
           />
           <TextField
             name="nomeCliente"
-            value={cliente.nomeCliente}
+            value={customer.nomeCliente}
             id="nomeCliente"
             label="Nome"
             type="text"

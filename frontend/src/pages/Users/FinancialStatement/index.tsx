@@ -10,7 +10,7 @@ import SherenergyContext from "store/context/context";
 
 
 export default function FinancialStatement() {
-  const { cliente} = useContext(SherenergyContext);
+  const { customer} = useContext(SherenergyContext);
   return (
     <Container>
         <h1 className="h1-main">
@@ -23,10 +23,10 @@ export default function FinancialStatement() {
           Receita Total: <span>{calculateTotalIncome(dadosUsina)}</span>
         </label>
         <SpanUser>
-          Participação do cliente:
+          Participação do customer:
           <div>
             <SelectUser /> 
-            <span>{(cliente?.rendimento) ? cliente.rendimento : "0.00"}</span>             
+            <span>{(customer?.rendimento) ? customer.rendimento : "0.00"}</span>             
           </div>
         </SpanUser>
     </Container>
