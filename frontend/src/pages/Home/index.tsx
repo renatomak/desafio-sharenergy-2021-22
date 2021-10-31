@@ -5,7 +5,7 @@ import { Container } from "./styled";
 const Home = () => {
   return (
     <Container>
-      <h1>Economize com a Energia Solar!</h1>
+      <h1 className="h1-main">Economize com a Energia Solar!</h1>
       <h3>
         Clique no botão abaixo e obtenha já uma cotação do seu sistema
         fotovoltaico!

@@ -1,15 +1,17 @@
+import { customerDailyIncome } from "pages/Users/FinancialStatement/AuxiliaryFunctions";
 import React, { createContext, useEffect, useState } from "react";
 import dadosClientes from "store/dadosClientes.json";
+import dadosUsina from "store/dadosUsina.json";
 import { Cliente } from "types/cliente";
-import { Usinas } from "types/usinas";
+import { Usina } from "types/usina";
 
 type PropsClientContext = {
   clientes: Cliente[];
   setClientes: (data: Cliente[]) => void;
   cliente: Cliente;
   setCliente: (data: Cliente) => void;
-  usina: Usinas;
-  setUsina: (data: Usinas) => void;
+  usina: Usina;
+  setUsina: (data: Usina) => void;
   idCliente: number;
   setIdCliente: (data: number) => void;
   getNextId: number;
@@ -23,6 +25,7 @@ export const initialSateUsina = {
 export const initialStateCliente = {
   numeroCliente: 0,
   nomeCliente: "",
+  rendimento: 0,
   usinas: [
     initialSateUsina,
   ],
@@ -34,7 +37,7 @@ export const DEFAULT_VALUE = {
   cliente: initialStateCliente,
   setCliente: (data: Cliente) => {},
   usina: initialSateUsina,
-  setUsina: (data: Usinas) => {},
+  setUsina: (data: Usina) => {},
   idCliente: 0,
   setIdCliente: (data: number) => {},
   getNextId: 0,
@@ -50,7 +53,12 @@ const SherenergyContextProvider: React.FC = ({ children }) => {
 
 
   const iniciarListaClientes = () => {
-    setClientes(dadosClientes);
+    const customers = dadosClientes.map((item) => {
+      const newCustomer = {...item, rendimento: 0 };
+      return newCustomer;
+    });
+    const NewCustomers = customerDailyIncome(1, dadosUsina, customers);
+    setClientes(NewCustomers);
   };
 
   useEffect(() => {
@@ -61,7 +69,7 @@ const SherenergyContextProvider: React.FC = ({ children }) => {
 
   useEffect(() => {     
     setIdCliente(getNextId);
-  }, [clientes]);
+  }, [clientes, getNextId]);
 
   const context = {
     cliente,

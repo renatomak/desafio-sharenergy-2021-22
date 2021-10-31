@@ -1,7 +1,10 @@
-import { Usinas } from "./usinas";
+import { Usina } from "./usina";
 
 export type Cliente = {
   numeroCliente: number;
   nomeCliente: string;
-  usinas: Usinas[];
+  rendimento: number;
+  usinas: Usina[];
 };
+
+

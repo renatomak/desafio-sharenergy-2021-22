@@ -66,9 +66,7 @@ export default function StickyHeadTable() {
   });
 
   const selectRow = (data: any) => {
-    const selected = clientes.filter((item) => {
-      if (parseInt(data.code) === item.numeroCliente) return item;
-    });
+    const selected = clientes.filter((item) => parseInt(data.code) === item.numeroCliente);
     const { usinas } = selected[0];
 
     setCliente(selected[0]);
@@ -97,7 +95,6 @@ export default function StickyHeadTable() {
             {rows
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row) => {
-                // console.log(row)
                 return (
                   <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
                     {columns.map((column) => {

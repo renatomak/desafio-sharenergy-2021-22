@@ -1,5 +1,4 @@
 import * as React from "react";
-import FinancialFeedback from "./FinancialFeedback";
 import Form from "./Form";
 import { Container } from "./styled";
 import UserTable from "./UserTable";
@@ -8,10 +7,9 @@ export default function FormPropsTextFields() {
 
   return (
     <Container>
+      <h1 className="h1-main">Dados dos Clientes</h1>
       <Form />
-      <h3>Dados dos Clientes</h3>
       <UserTable />
-      <FinancialFeedback />
     </Container>
   );
 }
