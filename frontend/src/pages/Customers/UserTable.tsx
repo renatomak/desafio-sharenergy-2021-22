@@ -22,7 +22,7 @@ interface Column {
 const columns: readonly Column[] = [
   { id: "code", label: "Número", minWidth: 50 },
   { id: "name", label: "Name", minWidth: 170 },
-  { id: "usinas", label: "Códigos das Usinas", minWidth: 170 },
+  { id: "usinas", label: "Participação", minWidth: 170 },
 ];
 
 interface Data {
@@ -54,14 +54,14 @@ export default function StickyHeadTable() {
   };
 
   const rows = customers?.map(({ numeroCliente, nomeCliente, usinas }) => {
-    const usinaIds = usinas.reduce(
-      (acc, elem) => (acc += " " + elem.usinaId + ","),
+    const participacao = usinas.reduce(
+      (acc, elem) => (acc += " " + elem.percentualDeParticipacao + ","),
       ""
     );
     return createData(
       String(numeroCliente),
       nomeCliente,
-      usinaIds.substr(0, usinaIds.length - 1)
+      participacao.substr(0, participacao.length - 1)
     );
   });
 
@@ -75,8 +75,8 @@ export default function StickyHeadTable() {
   };
 
   return (
-    <Paper sx={{ width: "100%", overflow: "hidden" }}>
-      <TableContainer sx={{ maxHeight: 440 }}>
+    <Paper sx={{ width: "100%", overflow: "hidden" }} style={{backgroundColor: "rgba(0,0,0,0.3)"}}>
+      <TableContainer sx={{ maxHeight: 440 }} >
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>

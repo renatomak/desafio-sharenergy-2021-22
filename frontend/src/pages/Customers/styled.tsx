@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,4 +12,8 @@ export const Container = styled.div`
         margin-top: 20px;
     }
 `;
-export const Div = styled.div``;
+export const DivFormChart = styled.div`
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+`;

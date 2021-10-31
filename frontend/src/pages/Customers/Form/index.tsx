@@ -93,7 +93,7 @@ export default function Form(this: any) {
           />
           <TextField
             name="usinaId"
-            value={usina.usinaId >= 0 ? usina.usinaId : 0}
+            value={usina.usinaId >= 1 ? usina.usinaId : 1}
             id="usinaId"
             label="Código da Usina"
             type="number"
