@@ -46,11 +46,30 @@ const BarChart = () => {
       return Number(item.tensao_V.toFixed(2));
     });
 
+    // TODO: FONTE: https://qastack.com.br/programming/11832914/round-to-at-most-2-decimal-places-only-if-necessary
+
+    const convertHoursIntoMinutes = (value: string): number => {
+      const horas = value.substr(0, value.indexOf("."));
+      const str = value.replace(horas, "0");
+      const minutos = Math.round(
+        ((parseFloat(str) * 60 + Number.EPSILON) * 100) / 100
+      );
+      return minutos;
+    };
+
     setChartData({
       labels: {
-        categories: dadosUsina.map(
-          (item) => item.tempo_h.toFixed(2).replace(".", "h ") + "m"
-        ),
+        categories: dadosUsina.map(({ tempo_h }) => {
+          const tempo = String(tempo_h);
+
+          if (tempo.includes(".")) {
+            const horas = tempo.substr(0, tempo.indexOf("."));
+            const minutos = convertHoursIntoMinutes(tempo);
+            return `${horas}h ${minutos}m`;
+          }
+
+          return `${tempo}h 00m`;
+        }),
       },
       series: [
         {
@@ -74,7 +93,7 @@ const BarChart = () => {
         type="area"
         height="390"
         width="1200"
-        style={{color: 'green'}}
+        style={{ color: "green" }}
       />
     </>
   );
