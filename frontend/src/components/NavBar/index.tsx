@@ -18,10 +18,10 @@ const NavBar = () => {
             </Button>
             <UlMenu id="menu">
                 <li><ALink href="/">INÍCIO</ALink></li>
-                <li><ALink href="/about-us">SOBRE NÓS</ALink></li>
-                <li><ALink href="/contact">CONTATO</ALink></li>
-                <li><ALink href="/contact">CARREIRAS</ALink></li>
-                <li><ALink href="/contact">BLOG</ALink></li>
+                <li><ALink href="/dashboard">DASHBOARD</ALink></li>
+                <li><ALink href="/users">CLIENTES</ALink></li>
+                <li><ALink href="/">CONTATO</ALink></li>
+                <li><ALink href="/">BLOG</ALink></li>
                 <Button type="button" className="btn-lg">ORÇAMENTO</Button>
             </UlMenu>
         </nav>
