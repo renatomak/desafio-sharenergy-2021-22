@@ -1,4 +1,4 @@
-import { customerDailyIncome } from "pages/Users/FinancialStatement/AuxiliaryFunctions";
+import { customerDailyIncome } from "pages/Customers/FinancialStatement/AuxiliaryFunctions";
 import React, { createContext, useEffect, useState } from "react";
 import dadosClientes from "store/dadosClientes.json";
 import dadosUsina from "store/dadosUsina.json";

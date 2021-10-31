@@ -1,7 +1,7 @@
 import DataAnalysis from "pages/DataAnalysis";
 import Home from "pages/Home";
-import Users from "pages/Users";
-import FinancialStatement from "pages/Users/FinancialStatement";
+import Users from "pages/Customers";
+import FinancialStatement from "pages/Customers/FinancialStatement";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import NavBar from "./components/NavBar";
 

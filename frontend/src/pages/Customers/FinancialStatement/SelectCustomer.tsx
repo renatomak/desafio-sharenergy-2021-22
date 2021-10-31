@@ -1,11 +1,11 @@
 import React from "react";
 import SherenergyContext from "store/context/context";
-import { ContainerSelectUser } from "./styled";
+import { ContainerSelectCustomer } from "./styled";
 
-export default function SelectUser() {
+export default function SelectCustomer() {
   const { customers, setCustomer, customer } = React.useContext(SherenergyContext);
 
-  const handleChangeCliente = (
+  const handleChangeCustomer = (
     e: React.ChangeEvent<HTMLSelectElement>
   ): void => {
     const { value } = e.target;   
@@ -14,18 +14,18 @@ export default function SelectUser() {
   };
 
   return (
-    <ContainerSelectUser>
+    <ContainerSelectCustomer>
       <select
         name="numeroCliente"
         value={customer?.numeroCliente}
         id={customer?.nomeCliente}
-        onChange={handleChangeCliente}
+        onChange={handleChangeCustomer}
       >
-        <option value="Escolha um customer">Escolha um cleinte</option>
+        <option value="Escolha um cliente">Escolha um cliente</option>
         {customers.map(({numeroCliente, nomeCliente}) => (
           <option key={numeroCliente} value={numeroCliente}>{nomeCliente}</option>
         ))}
       </select>
-    </ContainerSelectUser>
+    </ContainerSelectCustomer>
   );
 }

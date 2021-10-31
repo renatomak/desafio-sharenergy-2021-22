@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import SelectUser from "./SelectUser";
+import SelectUser from "./SelectCustomer";
 import dadosUsina from "store/dadosUsina.json";
 import {
   calculateTotalEnergyInDay,

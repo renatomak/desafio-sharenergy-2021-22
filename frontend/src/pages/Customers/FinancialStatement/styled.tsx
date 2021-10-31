@@ -50,7 +50,7 @@ export const SpanUser = styled.div`
   }
 `;
 
-export const ContainerSelectUser = styled.div`
+export const ContainerSelectCustomer = styled.div`
     select {
         all: unset;
         text-align: right;
