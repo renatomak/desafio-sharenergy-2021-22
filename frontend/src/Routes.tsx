@@ -5,15 +5,20 @@ import FinancialStatement from "pages/Users/FinancialStatement";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import NavBar from "./components/NavBar";
 
+export const DATAANALYSIS = "/data-analysis";
+export const HOME = '/';
+export const CUSTOMERS = '/customers'
+export const FINANCIALSTATEMENT = "/financial-statement"
+
 const Routes = () => {
   return (
     <BrowserRouter>
       <NavBar />
       <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/data-analysis" component={DataAnalysis} />
-        <Route path="/users" component={Users} />
-        <Route path="/financial-statement" component={FinancialStatement} />
+        <Route exact path={HOME} component={Home} />
+        <Route path={DATAANALYSIS} component={DataAnalysis} />
+        <Route path={CUSTOMERS} component={Users} />
+        <Route path={FINANCIALSTATEMENT} component={FinancialStatement} />
 
       </Switch>
     </BrowserRouter>

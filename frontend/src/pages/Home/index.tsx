@@ -1,5 +1,6 @@
 import { Button } from "components/components.styleds";
 import * as React from "react";
+import { CUSTOMERS, DATAANALYSIS, FINANCIALSTATEMENT } from "Routes";
 import { Container } from "./styled";
 
 const Home = () => {
@@ -10,11 +11,14 @@ const Home = () => {
         Clique no botão abaixo e obtenha já uma cotação do seu sistema
         fotovoltaico!
       </h3>
-      <a href="/dashboard">
-        <Button className="btn-main">Visualizar dados</Button>
+      <a href={DATAANALYSIS}>
+        <Button className="btn-main">Análise - Produção Diária</Button>
       </a>
-      <a href="/users">
+      <a href={CUSTOMERS}>
         <Button className="btn-main">Gerenciamento de Clientes</Button>
+      </a>
+      <a href={FINANCIALSTATEMENT}>
+        <Button className="btn-main">Demonstrativos</Button>
       </a>
     </Container>
   );
