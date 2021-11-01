@@ -7,6 +7,9 @@ export const Container = styled.div`
   text-align: center;
   color: var(--white);
   margin: 0 auto;
+  width: 90vw;
 `;
 
-export const Div = styled.div``;
+export const DivMain = styled.div`
+  display: flex;
+`;

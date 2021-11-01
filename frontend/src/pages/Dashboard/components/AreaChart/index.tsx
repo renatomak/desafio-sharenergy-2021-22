@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import dadosUsina from "store/dadosUsina.json";
 import Chart from "react-apexcharts";
 import ComponentCheckbox from "./RowRadioButtonsGroup";
-import { ContainerChart } from "./styled";
+import { Container, ContainerChart } from "./styled";
 
 type SeriesData = {
   name: string;
@@ -86,7 +86,7 @@ const AreaChart = () => {
   }, [userChoice]);
 
   return (
-    <>
+    <Container>
       <ComponentCheckbox choice={setUserChoice} />
       <ContainerChart>
         <h3 className="text-primary">Produção diária da usina</h3>
@@ -95,11 +95,11 @@ const AreaChart = () => {
           series={chartData.series}
           type="area"
           height="390"
-          width="1200"
+          width="100%"
           style={{ color: "green" }}
         />
       </ContainerChart>
-    </>
+    </Container>
   );
 };
 

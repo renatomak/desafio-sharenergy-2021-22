@@ -1,9 +1,10 @@
-import { customerDailyIncome } from "pages/Customers/FinancialStatement/AuxiliaryFunctions";
 import React, { createContext, useEffect, useState } from "react";
 import dadosClientes from "store/dadosClientes.json";
 import dadosUsina from "store/dadosUsina.json";
+
 import { Customer } from "types/customer";
 import { Usina } from "types/usina";
+import { customerDailyIncome } from "../../util/AuxiliaryFunctions";
 
 type PropsClientContext = {
   customers: Customer[];

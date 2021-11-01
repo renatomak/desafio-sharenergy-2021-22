@@ -28,17 +28,17 @@ body {
   flex: 1 0 auto;
 }
 
-.footer {
-  flex-shrink: 0;
-  text-align: center;
-}
-
 .bg-primary {
   background-color: var(--primary-color) !important;
 }
 
 .text-primary {
   color: var(--primary-color) !important;
+}
+
+.text-results {
+  color: var(--gray);
+  font-weight: 700;
 }
 
 .h1-main {

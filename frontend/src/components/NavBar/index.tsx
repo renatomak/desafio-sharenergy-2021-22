@@ -1,6 +1,6 @@
 import logo from "assets/img/logo-Sharenergy-01.png";
 import * as React from "react";
-import { CUSTOMERS, DATAANALYSIS, FINANCIALSTATEMENT, HOME } from "Routes";
+import { CUSTOMERS, DATAANALYSIS, HOME } from "Routes";
 import { Button } from "../components.styleds";
 import { ALink, Header, UlMenu } from "./styled";
 
@@ -26,7 +26,7 @@ const NavBar = () => {
             <ALink href={CUSTOMERS}>CLIENTES</ALink>
           </li>
           <li>
-            <ALink href={FINANCIALSTATEMENT}>DEMONSTRATIVOS</ALink>
+            <ALink href={HOME}>CONTATOS</ALink>
           </li>
           <li>
             <ALink href={HOME}>BLOG</ALink>

@@ -1,6 +1,6 @@
 import { Button } from "components/components.styleds";
 import * as React from "react";
-import { CUSTOMERS, DATAANALYSIS, FINANCIALSTATEMENT } from "Routes";
+import { CUSTOMERS, DATAANALYSIS } from "Routes";
 import { Container } from "./styled";
 
 const Home = () => {
@@ -13,9 +13,6 @@ const Home = () => {
       </a>
       <a href={CUSTOMERS}>
         <Button className="btn-main">Gerenciamento de Clientes</Button>
-      </a>
-      <a href={FINANCIALSTATEMENT}>
-        <Button className="btn-main">Demonstrativos</Button>
       </a>
     </Container>
   );
