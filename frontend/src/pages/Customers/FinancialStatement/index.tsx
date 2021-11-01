@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
-import SelectUser from "./SelectCustomer";
+import SelectCustomer from "./SelectCustomer";
 import dadosUsina from "store/dadosUsina.json";
 import {
   calculateTotalEnergyInDay,
   calculateTotalIncome,
 } from "./AuxiliaryFunctions";
-import { Container, SpanUser } from "./styled";
+import { Container, Span, SpanCustomer } from "./styled";
 import SherenergyContext from "store/context/context";
 
 
@@ -17,18 +17,18 @@ export default function FinancialStatement() {
           Demonstração financeira
         </h1>
         <label>
-          Energia gerada: <span>{calculateTotalEnergyInDay(dadosUsina)}</span>
+          Energia gerada: <Span className ="text-primary">{calculateTotalEnergyInDay(dadosUsina)} kWh</Span>
         </label>
         <label>
-          Receita Total: <span>{calculateTotalIncome(dadosUsina)}</span>
+          Receita Total: <Span className ="text-primary">R$ {calculateTotalIncome(dadosUsina)}</Span>
         </label>
-        <SpanUser>
+        <SpanCustomer>
           Participação do customer:
           <div>
-            <SelectUser /> 
-            <span>{(customer?.rendimento) ? customer.rendimento : "0.00"}</span>             
+            <SelectCustomer /> 
+            <Span id="income">R$ {(customer?.rendimento) ? customer.rendimento : "0.00"}</Span>             
           </div>
-        </SpanUser>
+        </SpanCustomer>
     </Container>
   );
 }
