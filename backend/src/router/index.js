@@ -1,10 +1,9 @@
 const express = require('express');
+const { create } = require('../controllers');
 
 const router = express.Router();
 
-router.get('/users', (req, res, next) => {
-    res.status(200).json({ message: "inicio do backend"})
-});
+router.post('/customers', create);
 
 
 module.exports = router;
