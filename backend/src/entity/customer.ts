@@ -1,21 +1,21 @@
-import { Column, Entity, ObjectIdColumn } from "typeorm";
+import { Column, Entity, ObjectIdColumn } from 'typeorm';
 
 interface Usina {
-    usinaId: number;
-    percentualDeParticipacao: number;
+  usinaId: number;
+  percentualDeParticipacao: number;
 }
 
 @Entity()
 export class Customer {
-    @ObjectIdColumn()
-    id!: string;
+  @ObjectIdColumn()
+  id!: string;
 
-    @Column()
-    numeroCliente!: string;
+  @Column()
+  numeroCliente!: string;
 
-    @Column()
-    nomeCliente!: string;
+  @Column()
+  nomeCliente!: string;
 
-    @Column()
-    usinas!: Array<Usina>;
+  @Column()
+  usinas!: Array<Usina>;
 }

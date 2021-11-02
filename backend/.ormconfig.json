@@ -1,0 +1,21 @@
+{
+  "type": "mongodb",
+  "host": "localhost",
+  "database": "sharenergy",
+  "synchronize": true,
+  "logging": false,
+  "entities": [
+    "@shared/typeorm/entity/*.js"
+  ],
+  "subscribers": [
+    "@shared/typeorm/subscriber/*.js"
+  ],
+  "migrations": [
+    "@shared/typeorm/migration/*.js"
+  ],
+  "cli": {
+    "entitiesDir": "@shared/typeorm/entity",
+    "migrationsDir": "@shared/typeorm/migration",
+    "subscribersDir": "@shared/typeorm/subscriber"
+  }
+}
