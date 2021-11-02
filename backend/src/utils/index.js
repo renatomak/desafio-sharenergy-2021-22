@@ -10,7 +10,7 @@ const STATUS_422_UNPROCESSABLE_ENTITY = 422;
 const messageError = (errorMSN, message) =>
   `\n       ${errorMSN} \n****** Erro ao ${message} ******\n\n`;
 
-export default {
+module.exports = {
   STATUS_200_OK,
   STATUS_201_CREATED,
   STATUS_204_NO_CONTENT,

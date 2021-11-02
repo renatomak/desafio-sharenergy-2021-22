@@ -1,6 +1,4 @@
-import { MongoClient } from 'mongodb';
-
-const process: NodeJS.Process;
+const { MongoClient } = require('mongodb');
 
 const DB_NAME = process.env.DB_NAME || 'sharenergy';
 const MONGO_DB_URL =
@@ -19,12 +17,3 @@ const connection = () =>
     });
 
 module.exports = { connection, DB_NAME };
-
-/* import {createConnection, Connection} from "typeorm";
-
-const connection: Connection = await createConnection({
-    type: "mongodb",
-    host: "localhost",
-    port: 27017,
-    database: "test"
-});*/

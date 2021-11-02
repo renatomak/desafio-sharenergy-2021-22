@@ -1,10 +1,11 @@
-/* const {
+const {
   findUserNameModel,
   createModel,
   readByIdModel,
   updateModel,
   deleteModel,
 } = require('../models');
+
 const { messageError } = require('../utils');
 
 const createService = async customer => {
@@ -28,4 +29,3 @@ module.exports = {
   updateService,
   deleteService,
 };
- */

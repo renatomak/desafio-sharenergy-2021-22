@@ -1,5 +1,10 @@
 const rescue = require('express-rescue');
-const { createService, readByIdService, updateService, deleteService } = require('../services');
+const {
+  createService,
+  readByIdService,
+  updateService,
+  deleteService,
+} = require('../services');
 const {
   STATUS_400_BAD_REQUEST,
   STATUS_201_CREATED,
@@ -24,16 +29,15 @@ const create = rescue(async (req, res) => {
     console.error(error.message);
     return res
       .status(STATUS_400_BAD_REQUEST)
-      .json({ message: 'Invalid fields'});
+      .json({ message: 'Invalid fields' });
   }
 });
 
 const read = rescue(async (req, res) => {});
 
-const update = rescue(async (req, res) => {
-});
+const update = rescue(async (req, res) => {});
 
-const deleteUser = rescue(async (req, res) => {})
+const deleteUser = rescue(async (req, res) => {});
 
 module.exports = {
   create,

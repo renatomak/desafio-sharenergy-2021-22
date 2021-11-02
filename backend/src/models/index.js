@@ -1,10 +1,10 @@
-const { connection } = require('../../config/conn');
+const { connection } = require('../config/conn');
 
 const COLLECTION_NAME = 'customer';
 
 const createModel = async customer =>
   connection().then(async db => {
-    const result = await db.collection(COLLECTION_NAME).insertOne(customer);
+    await db.collection(COLLECTION_NAME).insertOne(customer);
     return customer;
   });
 
