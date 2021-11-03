@@ -29,7 +29,20 @@ const checkUsernameformat = (req, res, next) => {
   next();
 };
 
+const checkPasswordExists = (req, res, next) => {
+  const { password } = req.body;
+
+  if (!password || password === '') {
+    return res
+      .status(STATUS_400_BAD_REQUEST)
+      .send({ message: 'The "password" field is required' });
+  }
+
+  next();
+};
+
 module.exports = {
   checkUniqueUsername,
   checkUsernameformat,
+  checkPasswordExists,
 };
