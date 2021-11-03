@@ -1,3 +1,4 @@
+const { ObjectID } = require('mongodb');
 const { connection } = require('../config/conn');
 
 const COLLECTION_NAME = 'customer';
@@ -40,7 +41,11 @@ const updateModel = async customer => {
   return customer;
 };
 
-const deleteModel = async id => {};
+const deleteModel = async id => {
+  await connection().then(db =>
+    db.collection(COLLECTION_NAME).deleteOne({ _id: ObjectID(id) }),
+  );
+};
 
 module.exports = {
   createModel,

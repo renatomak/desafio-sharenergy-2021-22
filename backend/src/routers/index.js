@@ -1,5 +1,5 @@
 const express = require('express');
-const { create, update, read } = require('../controllers');
+const { create, update, read, deleteUser } = require('../controllers');
 const Middlewares = require('../middlewares');
 
 const router = express.Router();
@@ -23,5 +23,7 @@ router.put(
 );
 
 router.get('/customers', read);
+
+router.delete('/customers/:id', deleteUser);
 
 module.exports = router;

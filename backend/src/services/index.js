@@ -59,7 +59,15 @@ const updateService = async customer => {
   }
 };
 
-const deleteService = async id => {};
+const deleteService = async id => {
+  try {
+    await deleteModel(id);
+
+    return true;
+  } catch (error) {
+    throw Error(messageError(error.message, 'delete to user'));
+  }
+};
 
 module.exports = {
   createService,
