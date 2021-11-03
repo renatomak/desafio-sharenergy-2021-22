@@ -7,9 +7,10 @@ const router = express.Router();
 router.post(
   '/customers',
   [
+    Middlewares.checkUserNameExists,
+    Middlewares.checkPasswordExists,
     Middlewares.checkUniqueUsername,
     Middlewares.checkUsernameformat,
-    Middlewares.checkPasswordExists,
   ],
   create,
 );

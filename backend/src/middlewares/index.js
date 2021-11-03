@@ -41,8 +41,19 @@ const checkPasswordExists = (req, res, next) => {
   next();
 };
 
+const checkUserNameExists = (req, res, next) => {
+  const { nomeUsuario } = req.body;
+  if (!nomeUsuario || nomeUsuario === '') {
+    return res
+      .status(STATUS_400_BAD_REQUEST)
+      .send({ message: 'The "nomeUsuario" field is mandatory' });
+  }
+  next();
+};
+
 module.exports = {
   checkUniqueUsername,
   checkUsernameformat,
   checkPasswordExists,
+  checkUserNameExists,
 };
