@@ -1,3 +1,4 @@
+const { readByNumberCustomer } = require('../models');
 const { readByUserNameService } = require('../services');
 const { STATUS_409_CONFLICT, STATUS_400_BAD_REQUEST } = require('../utils');
 
@@ -5,6 +6,20 @@ const checkUniqueUsername = async (req, res, next) => {
   const { nomeUsuario } = req.body;
 
   const result = await readByUserNameService(nomeUsuario);
+
+  if (result) {
+    return res
+      .status(STATUS_409_CONFLICT)
+      .json({ message: 'Customer already registered!' });
+  }
+
+  next();
+};
+
+const checkUniqueNumberCustomer = async (req, res, next) => {
+  const { numeroCliente } = req.body;
+
+  const result = await readByNumberCustomer(numeroCliente);
 
   if (result) {
     return res
@@ -56,4 +71,5 @@ module.exports = {
   checkUsernameformat,
   checkPasswordExists,
   checkUserNameExists,
+  checkUniqueNumberCustomer,
 };

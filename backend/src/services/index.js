@@ -1,6 +1,6 @@
 const {
   createModel,
-  readByIdModel,
+  readByNumberCustomer,
   findUserNameModel,
   updateModel,
   deleteModel,
@@ -29,7 +29,25 @@ const readByUserNameService = async userName => {
 
 const readByIdService = async id => {};
 
-const updateService = async customer => {};
+const updateService = async customer => {
+  try {
+    const { nomeCliente } = customer;
+
+    if (nomeCliente) {
+      const registered = await findUserNameModel(nomeCliente);
+      console.log(registered);
+      if (registered?.customer && customer?._id != registered.customer?._id) {
+        return { registered: true };
+      }
+    }
+
+    const result = await updateModel(customer);
+    console.log('RESULT SERVICE: ', result);
+    return result;
+  } catch (error) {
+    throw Error(messageError(error.message, 'updating customer'));
+  }
+};
 
 const deleteService = async id => {};
 
