@@ -5,6 +5,7 @@ import SharenergyContext, {
   initialSateUsina,
   initialStateCliente,
 } from "store/context/context";
+import { fetchCreateCustomer } from "store/requests";
 import { Container } from "./styled";
 
 export default function Form(this: any) {
@@ -38,8 +39,20 @@ export default function Form(this: any) {
     setUsina({ ...usina, [name]: value });
   };
 
-  const addCliente = (): void => {
+  const addCliente = async () => {
     setCustomers([...customers, customer]);
+    const { numeroCliente, nomeCliente, nomeUsuario, password, usinas } =
+      customer;
+
+    const newCustomer = {
+      numeroCliente,
+      nomeCliente,
+      nomeUsuario,
+      password,
+      usinas,
+    };
+
+    await fetchCreateCustomer(newCustomer);
     clearInputs();
   };
 
@@ -95,6 +108,22 @@ export default function Form(this: any) {
             id="nomeCliente"
             label="Nome"
             type="text"
+            onChange={handleChangeCliente}
+          />
+          <TextField
+            name="nomeUsuario"
+            value={customer.nomeUsuario}
+            id="nomeUsuario"
+            label="Nome de usuário"
+            type="text"
+            onChange={handleChangeCliente}
+          />
+          <TextField
+            name="password"
+            value={customer.password}
+            id="password"
+            label="senha"
+            type="password"
             onChange={handleChangeCliente}
           />
           <TextField

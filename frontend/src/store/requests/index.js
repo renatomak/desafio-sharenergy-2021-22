@@ -8,4 +8,15 @@ function fetchGetAllCustomers() {
     .catch((err) => console.log(err.message));
 }
 
-export { fetchGetAllCustomers };
+const fetchCreateCustomer = (customer) => {
+  const endpoint = "http://localhost:3001/customers";
+  return fetch(endpoint, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(customer),
+  })
+    .then((response) => response.json())
+    .then((data) => data);
+};
+
+export { fetchGetAllCustomers, fetchCreateCustomer };
