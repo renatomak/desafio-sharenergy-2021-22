@@ -4,6 +4,7 @@ const {
   findUserNameModel,
   updateModel,
   deleteModel,
+  findAllCustomersModel,
 } = require('../models');
 
 const { messageError } = require('../utils');
@@ -20,10 +21,20 @@ const createService = async customer => {
 const readByUserNameService = async userName => {
   try {
     const getResult = await findUserNameModel(userName);
-    console.log(getResult);
+
     return getResult;
   } catch (error) {
     throw Error(messageError(error.message, 'read customer'));
+  }
+};
+
+const readAllCustomersService = async _ => {
+  try {
+    const getAllResult = await findAllCustomersModel();
+
+    return getAllResult;
+  } catch (error) {
+    throw Error(messageError(error.message, 'read customers'));
   }
 };
 
@@ -42,7 +53,6 @@ const updateService = async customer => {
     }
 
     const result = await updateModel(customer);
-    console.log('RESULT SERVICE: ', result);
     return result;
   } catch (error) {
     throw Error(messageError(error.message, 'updating customer'));
@@ -57,4 +67,5 @@ module.exports = {
   readByUserNameService,
   updateService,
   deleteService,
+  readAllCustomersService,
 };

@@ -22,6 +22,14 @@ const findUserNameModel = async nomeUsuario => {
   return result;
 };
 
+const findAllCustomersModel = async _ => {
+  const result = await connection().then(db =>
+    db.collection(COLLECTION_NAME).find({}).toArray(),
+  );
+
+  return result;
+};
+
 const updateModel = async customer => {
   console.log('aqui');
   await connection().then(db => {
@@ -40,4 +48,5 @@ module.exports = {
   findUserNameModel,
   updateModel,
   deleteModel,
+  findAllCustomersModel,
 };

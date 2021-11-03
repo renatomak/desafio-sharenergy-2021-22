@@ -1,5 +1,5 @@
 const express = require('express');
-const { create, update } = require('../controllers');
+const { create, update, read } = require('../controllers');
 const Middlewares = require('../middlewares');
 
 const router = express.Router();
@@ -21,5 +21,7 @@ router.put(
   [Middlewares.checkUniqueUsername, Middlewares.checkUsernameformat],
   update,
 );
+
+router.get('/customers', read);
 
 module.exports = router;

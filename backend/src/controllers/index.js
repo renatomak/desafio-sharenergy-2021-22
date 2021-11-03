@@ -4,6 +4,8 @@ const {
   readByIdService,
   updateService,
   deleteService,
+  readAllService,
+  readAllCustomersService,
 } = require('../services');
 const {
   STATUS_400_BAD_REQUEST,
@@ -28,7 +30,18 @@ const create = rescue(async (req, res) => {
   }
 });
 
-const read = rescue(async (req, res) => {});
+const read = rescue(async (_req, res) => {
+  try {
+    const result = await readAllCustomersService();
+
+    return res.status(STATUS_200_OK).json(result);
+  } catch (error) {
+    console.error(error.message);
+    return res
+      .status(STATUS_422_UNPROCESSABLE_ENTITY)
+      .json({ message: 'User not found' });
+  }
+});
 
 const update = rescue(async (req, res) => {
   try {
@@ -37,7 +50,6 @@ const update = rescue(async (req, res) => {
     const customer = { ...body, _id: id };
 
     const result = await updateService(customer);
-    console.log('RESULT: ', result);
 
     if (result?.registered) {
       return res
