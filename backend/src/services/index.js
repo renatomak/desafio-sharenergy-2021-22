@@ -1,7 +1,7 @@
 const {
-  findUserNameModel,
   createModel,
   readByIdModel,
+  findUserNameModel,
   updateModel,
   deleteModel,
 } = require('../models');
@@ -17,6 +17,16 @@ const createService = async customer => {
   }
 };
 
+const readByUserNameService = async userName => {
+  try {
+    const getResult = await findUserNameModel(userName);
+    console.log(getResult);
+    return getResult;
+  } catch (error) {
+    throw Error(messageError(error.message, 'read customer'));
+  }
+};
+
 const readByIdService = async id => {};
 
 const updateService = async customer => {};
@@ -26,6 +36,7 @@ const deleteService = async id => {};
 module.exports = {
   createService,
   readByIdService,
+  readByUserNameService,
   updateService,
   deleteService,
 };

@@ -10,7 +10,12 @@ const createModel = async customer =>
 
 const readByIdModel = async id => {};
 
-const findUserNameModel = async userName => {};
+const findUserNameModel = async nomeUsuario => {
+  const result = await connection().then(db =>
+    db.collection(COLLECTION_NAME).findOne({ nomeUsuario }),
+  );
+  return result;
+};
 
 const updateModel = async customer => {};
 

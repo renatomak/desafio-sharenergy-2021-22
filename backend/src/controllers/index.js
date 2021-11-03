@@ -17,13 +17,6 @@ const create = rescue(async (req, res) => {
 
     const createResult = await createService(customer);
 
-    if (createResult.registered) {
-      console.error(error.message);
-      return res
-        .status(STATUS_409_CONFLICT)
-        .json({ message: 'Customer already registered!' });
-    }
-
     return res.status(STATUS_201_CREATED).json(createResult);
   } catch (error) {
     console.error(error.message);
