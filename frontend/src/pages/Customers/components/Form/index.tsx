@@ -1,7 +1,7 @@
 import { Button, Stack, TextField } from "@material-ui/core";
 import { Box } from "@material-ui/system";
 import React, { useContext, useEffect } from "react";
-import SherenergyContext, {
+import SharenergyContext, {
   initialSateUsina,
   initialStateCliente,
 } from "store/context/context";
@@ -18,7 +18,7 @@ export default function Form(this: any) {
     idCustomer,
     getNextId,
     setIdCustomer,
-  } = useContext(SherenergyContext);
+  } = useContext(SharenergyContext);
 
   console.log("ID: ", idCustomer);
 
@@ -44,8 +44,12 @@ export default function Form(this: any) {
   };
 
   const updateCliente = (): void => {
-    const listClientes = customers.filter((item) => customer.numeroCliente !== item.numeroCliente);
-    const newListClientes = [customer, ...listClientes].sort((a, b) => a.numeroCliente - b.numeroCliente);
+    const listClientes = customers.filter(
+      (item) => customer.numeroCliente !== item.numeroCliente
+    );
+    const newListClientes = [customer, ...listClientes].sort(
+      (a, b) => a.numeroCliente - b.numeroCliente
+    );
 
     setCustomers(newListClientes);
     clearInputs();
@@ -59,9 +63,11 @@ export default function Form(this: any) {
 
   const deleteCliente = (): void => {
     console.log(customer);
-    const listClientes = customers.filter((item) => customer.numeroCliente !== item.numeroCliente);
+    const listClientes = customers.filter(
+      (item) => customer.numeroCliente !== item.numeroCliente
+    );
     setCustomers(listClientes);
-  }
+  };
 
   return (
     <Container>

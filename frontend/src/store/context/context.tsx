@@ -5,6 +5,7 @@ import dadosUsina from "store/dadosUsina.json";
 import { Customer } from "types/customer";
 import { Usina } from "types/usina";
 import { customerDailyIncome } from "../../util/AuxiliaryFunctions";
+import { fetchGetAllCustomers } from "../requests";
 
 type PropsClientContext = {
   customers: Customer[];
@@ -26,10 +27,10 @@ export const initialSateUsina = {
 export const initialStateCliente = {
   numeroCliente: 0,
   nomeCliente: "",
+  nomeUsuario: "",
+  password: "",
   rendimento: 0,
-  usinas: [
-    initialSateUsina,
-  ],
+  usinas: [initialSateUsina],
 };
 
 export const DEFAULT_VALUE = {
@@ -44,18 +45,19 @@ export const DEFAULT_VALUE = {
   getNextId: 0,
 };
 
-const SherenergyContext = createContext<PropsClientContext>(DEFAULT_VALUE);
+const SharenergyContext = createContext<PropsClientContext>(DEFAULT_VALUE);
 
-const SherenergyContextProvider: React.FC = ({ children }) => {
+const SharenergyContextProvider: React.FC = ({ children }) => {
   const [customers, setCustomers] = useState(DEFAULT_VALUE.customers);
   const [customer, setCustomer] = useState(DEFAULT_VALUE.customer);
   const [usina, setUsina] = useState(DEFAULT_VALUE.usina);
   const [idCustomer, setIdCustomer] = useState(DEFAULT_VALUE.idCustomer);
 
-
-  const iniciarListaClientes = () => {
-    const customers = dadosClientes.map((item) => {
-      const newCustomer = {...item, rendimento: 0 };
+  const iniciarListaClientes = async () => {
+    const getAllCustomers = await fetchGetAllCustomers();
+    console.log("GETCUSTOMERS: ", getAllCustomers);
+    const customers = getAllCustomers.map((item: Customer) => {
+      const newCustomer = { ...item, rendimento: 0 };
       return newCustomer;
     });
     const NewCustomers = customerDailyIncome(1, dadosUsina, customers);
@@ -66,9 +68,10 @@ const SherenergyContextProvider: React.FC = ({ children }) => {
     iniciarListaClientes();
   }, []);
 
-  const getNextId = customers.map((item) => item.numeroCliente).sort((a, b) => b - a)[0] + 1;
+  const getNextId =
+    customers.map((item) => item.numeroCliente).sort((a, b) => b - a)[0] + 1;
 
-  useEffect(() => {     
+  useEffect(() => {
     setIdCustomer(getNextId);
   }, [customers, getNextId]);
 
@@ -85,11 +88,11 @@ const SherenergyContextProvider: React.FC = ({ children }) => {
   };
 
   return (
-    <SherenergyContext.Provider value={context}>
+    <SharenergyContext.Provider value={context}>
       {children}
-    </SherenergyContext.Provider>
+    </SharenergyContext.Provider>
   );
 };
 
-export { SherenergyContextProvider };
-export default SherenergyContext;
+export { SharenergyContextProvider };
+export default SharenergyContext;

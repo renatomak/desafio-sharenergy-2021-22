@@ -1,13 +1,9 @@
 import React from "react";
 
-import { SherenergyContextProvider } from "./context";
+import { SharenergyContextProvider } from "./context";
 
 const GlobalContext: React.FC = ({ children }) => {
-    return (
-        <SherenergyContextProvider>
-            {children}
-        </SherenergyContextProvider>
-    )
-}
+  return <SharenergyContextProvider>{children}</SharenergyContextProvider>;
+};
 
 export default GlobalContext;
