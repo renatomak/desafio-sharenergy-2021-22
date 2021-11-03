@@ -1,5 +1,5 @@
 const { readByUserNameService } = require('../services');
-const { STATUS_409_CONFLICT } = require('../utils');
+const { STATUS_409_CONFLICT, STATUS_400_BAD_REQUEST } = require('../utils');
 
 const checkUniqueUsername = async (req, res, next) => {
   const { nomeUsuario } = req.body;
@@ -15,6 +15,21 @@ const checkUniqueUsername = async (req, res, next) => {
   next();
 };
 
+const checkUsernameformat = (req, res, next) => {
+  const { nomeUsuario } = req.body;
+
+  const RegExp = /^[\w\.\_\-]+$/;
+
+  if (!RegExp.test(nomeUsuario)) {
+    return res
+      .status(STATUS_400_BAD_REQUEST)
+      .send({ message: 'the username can then have letters, ".", "_", "-"' });
+  }
+
+  next();
+};
+
 module.exports = {
   checkUniqueUsername,
+  checkUsernameformat,
 };
