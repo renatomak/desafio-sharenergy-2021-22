@@ -19,8 +19,6 @@ export default function Form(this: any) {
     usina,
     setUsina,
     idCustomer,
-    getNextId,
-    setIdCustomer,
     updateListCustomers,
   } = useContext(SharenergyContext);
 
@@ -46,18 +44,18 @@ export default function Form(this: any) {
   };
 
   const addCliente = async () => {
-    const { numeroCliente, nomeCliente, nomeUsuario, password, usinas } =
-      customer;
+    // const { numeroCliente, nomeCliente, nomeUsuario, password, usinas } =
+    //   customer;
 
-    const newCustomer = {
-      numeroCliente,
-      nomeCliente,
-      nomeUsuario,
-      password,
-      usinas,
-    };
+    // // const newCustomer = {
+    // //   numeroCliente,
+    // //   nomeCliente,
+    // //   nomeUsuario,
+    // //   password,
+    // //   usinas,
+    // // };
 
-    await fetchCreateCustomer(newCustomer);
+    await fetchCreateCustomer(customer);
     await updateListCustomers();
     clearInputs();
   };
@@ -73,7 +71,6 @@ export default function Form(this: any) {
   const clearInputs = (): void => {
     setCustomer(initialStateCliente);
     setUsina(initialSateUsina);
-    setIdCustomer(getNextId);
   };
 
   const deleteCliente = async () => {
@@ -81,7 +78,6 @@ export default function Form(this: any) {
     await fetchDeleteCustomer(_id);
     await updateListCustomers();
     clearInputs();
-    setIdCustomer(getNextId - 1);
   };
 
   return (
@@ -95,14 +91,11 @@ export default function Form(this: any) {
         <Stack direction="row" spacing={2}>
           <TextField
             name="numeroCliente"
-            value={idCustomer || 1}
+            value={idCustomer}
             id="numeroCliente"
             label="Número do Customer"
             type="number"
             disabled
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              handleChangeCliente(e)
-            }
           />
           <TextField
             name="nomeCliente"

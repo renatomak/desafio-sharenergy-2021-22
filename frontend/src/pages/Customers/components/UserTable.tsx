@@ -36,7 +36,7 @@ function createData(code: string, name: string, usinas: string): Data {
 }
 
 export default function StickyHeadTable() {
-  const { customers, setCustomer, setUsina, setIdCustomer } =
+  const { customers, setCustomer, setUsina } =
     React.useContext(SharenergyContext);
 
   const [page, setPage] = React.useState(0);
@@ -66,14 +66,20 @@ export default function StickyHeadTable() {
   });
 
   const selectRow = (data: any) => {
+    console.log(data)
     const selected = customers.filter(
       (item) => parseInt(data.code) === item.numeroCliente
     );
-    const { usinas } = selected[0];
+    console.log(selected)
+
+    if (selected[0]) {
+      const { usinas } = selected[0];
+      setUsina(usinas[0]);
+    }
+    
 
     setCustomer(selected[0]);
-    setUsina(usinas[0]);
-    setIdCustomer(selected[0].numeroCliente);
+    
   };
 
   return (

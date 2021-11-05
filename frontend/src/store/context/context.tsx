@@ -14,8 +14,6 @@ type PropsClientContext = {
   usina: Usina;
   setUsina: (data: Usina) => void;
   idCustomer: number;
-  setIdCustomer: (data: number) => void;
-  getNextId: number;
   updateListCustomers: Function;
 };
 
@@ -42,8 +40,6 @@ export const DEFAULT_VALUE = {
   usina: initialSateUsina,
   setUsina: (data: Usina) => {},
   idCustomer: 1,
-  setIdCustomer: (data: number) => {},
-  getNextId: 0,
   updateListCustomers: Function,
 };
 
@@ -62,6 +58,7 @@ const SharenergyContextProvider: React.FC = ({ children }) => {
       const newCustomer = { ...item, rendimento: 0 };
       return newCustomer;
     });
+
     const NewCustomers = customerDailyIncome(1, dadosUsina, customers);
 
     setCustomers(NewCustomers);
@@ -71,12 +68,13 @@ const SharenergyContextProvider: React.FC = ({ children }) => {
     updateListCustomers();
   }, []);
 
-  const getNextId =
-    customers.map((item) => item.numeroCliente).sort((a, b) => b - a)[0] + 1;
-
   useEffect(() => {
-    setIdCustomer(getNextId? getNextId : 1);
-  }, [customers, getNextId]);
+    const newId =
+      customers
+        .map((item: Customer) => item.numeroCliente)
+        .sort((a: number, b: number) => b - a)[0] + 1 || 1;
+    setIdCustomer(newId);
+  }, [customers]);
 
   const context = {
     customer,
@@ -86,8 +84,6 @@ const SharenergyContextProvider: React.FC = ({ children }) => {
     usina,
     setUsina,
     idCustomer,
-    setIdCustomer,
-    getNextId,
     updateListCustomers,
   };
 
