@@ -41,7 +41,7 @@ export const DEFAULT_VALUE = {
   setCustomer: (data: Customer) => {},
   usina: initialSateUsina,
   setUsina: (data: Usina) => {},
-  idCustomer: 0,
+  idCustomer: 1,
   setIdCustomer: (data: number) => {},
   getNextId: 0,
   updateListCustomers: Function,
@@ -75,7 +75,7 @@ const SharenergyContextProvider: React.FC = ({ children }) => {
     customers.map((item) => item.numeroCliente).sort((a, b) => b - a)[0] + 1;
 
   useEffect(() => {
-    setIdCustomer(getNextId);
+    setIdCustomer(getNextId? getNextId : 1);
   }, [customers, getNextId]);
 
   const context = {

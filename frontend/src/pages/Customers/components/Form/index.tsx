@@ -95,7 +95,7 @@ export default function Form(this: any) {
         <Stack direction="row" spacing={2}>
           <TextField
             name="numeroCliente"
-            value={idCustomer}
+            value={idCustomer || 1}
             id="numeroCliente"
             label="Número do Customer"
             type="number"

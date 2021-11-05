@@ -1,4 +1,4 @@
-const { ObjectId } = require('bson');
+const { ObjectId } = require('mongodb');
 const { connection } = require('../config/conn');
 
 const COLLECTION_NAME = 'customer';
@@ -45,7 +45,7 @@ const updateModel = async customer => {
 
 const deleteModel = async id => {
   await connection().then(db =>
-    db.collection(COLLECTION_NAME).deleteOne({ _id: ObjectID(id) }),
+    db.collection(COLLECTION_NAME).deleteOne({ _id: ObjectId(id) }),
   );
 };
 
