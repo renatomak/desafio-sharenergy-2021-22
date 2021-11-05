@@ -17,7 +17,8 @@
     "dev": "nodemon index.js",
     "test": "jest --runInBand",
     "lint": "eslint . --ext .ts",
-    "lint-fix": "eslint . --ext .ts --fix"
+    "lint-fix": "eslint . --ext .ts --fix",
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
