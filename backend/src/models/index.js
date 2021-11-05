@@ -32,7 +32,6 @@ const findAllCustomersModel = async _ => {
 };
 
 const updateModel = async customer => {
-  console.log('aqui');
   const { _id, numeroCliente, nomeCliente, nomeUsuario, password, usinas } =
     customer;
   const result = await connection().then(db => {
@@ -40,7 +39,7 @@ const updateModel = async customer => {
       { $set: { numeroCliente, nomeCliente, nomeUsuario, password, usinas } },
     ]);
   });
-  console.log('resulte em model: ', result);
+
   return customer;
 };
 

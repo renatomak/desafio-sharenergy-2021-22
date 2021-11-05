@@ -63,7 +63,7 @@ const SharenergyContextProvider: React.FC = ({ children }) => {
       return newCustomer;
     });
     const NewCustomers = customerDailyIncome(1, dadosUsina, customers);
-    console.log("GETCUSTOMERS: ", NewCustomers);
+
     setCustomers(NewCustomers);
   };
 

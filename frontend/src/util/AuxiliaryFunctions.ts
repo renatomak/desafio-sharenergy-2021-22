@@ -40,8 +40,6 @@ export const customerDailyIncome = (
       }
     });
 
-    console.log(costumerRendimento, round(costumerRendimento, 2))
-
     return { ...costumer, rendimento: round(costumerRendimento, 2) };
   });
 

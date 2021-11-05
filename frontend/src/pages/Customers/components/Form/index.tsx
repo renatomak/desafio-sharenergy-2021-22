@@ -26,7 +26,7 @@ export default function Form(this: any) {
 
   useEffect(() => {
     setCustomer({ ...customer, usinas: [usina], numeroCliente: idCustomer });
-  }, [customer, idCustomer, setCustomer, usina]);
+  }, [usina]);
 
   const handleChangeCliente = (
     e: React.ChangeEvent<HTMLInputElement>
@@ -39,10 +39,10 @@ export default function Form(this: any) {
     let { value } = e.target;
 
     setUsina({
-      ...usina,
       percentualDeParticipacao: parseInt(value),
       usinaId: 1,
     });
+    setCustomer({ ...customer, usinas: [usina], numeroCliente: idCustomer });
   };
 
   const addCliente = async () => {

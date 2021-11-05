@@ -52,7 +52,6 @@ const update = rescue(async (req, res) => {
 
     const result = await updateService(customer);
 
-    console.log('RESULT EM controller: ', result);
 
     if (result?.registered) {
       return res

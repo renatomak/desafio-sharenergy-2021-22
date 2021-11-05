@@ -45,7 +45,7 @@ export default function RowRadioButtonsGroup(props: { choice: Function }) {
           <FormControlLabel
             value="temperatura"
             control={<Radio />}
-            label="Tmperatura"
+            label="Temperatura"
             onClick={() => choice("temperatura")}
           />
         </RadioGroup>
