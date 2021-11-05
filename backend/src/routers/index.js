@@ -16,11 +16,7 @@ router.post(
   create,
 );
 
-router.put(
-  '/customers/:id',
-  [Middlewares.checkUniqueUsername, Middlewares.checkUsernameformat],
-  update,
-);
+router.put('/customers/:id', [Middlewares.checkUsernameformat], update);
 
 router.get('/customers', read);
 

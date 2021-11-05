@@ -5,7 +5,11 @@ import SharenergyContext, {
   initialSateUsina,
   initialStateCliente,
 } from "store/context/context";
-import { fetchCreateCustomer } from "store/requests";
+import {
+  fetchCreateCustomer,
+  fetchDeleteCustomer,
+  fetchUpdateCustomer,
+} from "store/requests";
 import { Container } from "./styled";
 
 export default function Form(this: any) {
@@ -19,9 +23,8 @@ export default function Form(this: any) {
     idCustomer,
     getNextId,
     setIdCustomer,
+    updateListCustomers,
   } = useContext(SharenergyContext);
-
-  console.log("ID: ", idCustomer);
 
   useEffect(() => {
     setCustomer({ ...customer, usinas: [usina], numeroCliente: idCustomer });
@@ -35,12 +38,16 @@ export default function Form(this: any) {
   };
 
   const handleChangeUsina = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    const { value, name } = e.target;
-    setUsina({ ...usina, [name]: value });
+    let { value } = e.target;
+
+    setUsina({
+      ...usina,
+      percentualDeParticipacao: parseInt(value),
+      usinaId: 1,
+    });
   };
 
   const addCliente = async () => {
-    setCustomers([...customers, customer]);
     const { numeroCliente, nomeCliente, nomeUsuario, password, usinas } =
       customer;
 
@@ -53,18 +60,15 @@ export default function Form(this: any) {
     };
 
     await fetchCreateCustomer(newCustomer);
+    await updateListCustomers();
     clearInputs();
   };
 
-  const updateCliente = (): void => {
-    const listClientes = customers.filter(
-      (item) => customer.numeroCliente !== item.numeroCliente
-    );
-    const newListClientes = [customer, ...listClientes].sort(
-      (a, b) => a.numeroCliente - b.numeroCliente
-    );
+  const updateCliente = async () => {
+    const { _id } = customer;
 
-    setCustomers(newListClientes);
+    await fetchUpdateCustomer(_id, customer);
+    await updateListCustomers();
     clearInputs();
   };
 
@@ -74,12 +78,12 @@ export default function Form(this: any) {
     setIdCustomer(getNextId);
   };
 
-  const deleteCliente = (): void => {
-    console.log(customer);
-    const listClientes = customers.filter(
-      (item) => customer.numeroCliente !== item.numeroCliente
-    );
-    setCustomers(listClientes);
+  const deleteCliente = async () => {
+    const { _id } = customer;
+    await fetchDeleteCustomer(_id);
+    await updateListCustomers();
+    clearInputs();
+    setIdCustomer(getNextId - 1);
   };
 
   return (
@@ -133,6 +137,7 @@ export default function Form(this: any) {
             label="Código da Usina"
             type="number"
             onChange={handleChangeUsina}
+            disabled
           />
           <TextField
             name="percentualDeParticipacao"

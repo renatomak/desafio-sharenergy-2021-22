@@ -42,17 +42,18 @@ const readByIdService = async id => {};
 
 const updateService = async customer => {
   try {
-    const { nomeCliente } = customer;
+    const { nomeUsuario } = customer;
 
-    if (nomeCliente) {
-      const registered = await findUserNameModel(nomeCliente);
-      console.log(registered);
-      if (registered?.customer && customer?._id != registered.customer?._id) {
+    if (nomeUsuario) {
+      const registered = await findUserNameModel(nomeUsuario);
+      console.log('REGISTERED', registered);
+      if (registered && customer?._id != registered?._id) {
         return { registered: true };
       }
     }
 
     const result = await updateModel(customer);
+    console.log('result em SERVICE: ', result);
     return result;
   } catch (error) {
     throw Error(messageError(error.message, 'updating customer'));

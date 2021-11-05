@@ -1,4 +1,4 @@
-const { ObjectID } = require('mongodb');
+const { ObjectId } = require('bson');
 const { connection } = require('../config/conn');
 
 const COLLECTION_NAME = 'customer';
@@ -33,11 +33,14 @@ const findAllCustomersModel = async _ => {
 
 const updateModel = async customer => {
   console.log('aqui');
-  await connection().then(db => {
-    db.collection(COLLECTION_NAME).updateOne({ _id: customer._id }, [
-      { $set: customer },
+  const { _id, numeroCliente, nomeCliente, nomeUsuario, password, usinas } =
+    customer;
+  const result = await connection().then(db => {
+    db.collection(COLLECTION_NAME).updateOne({ _id: ObjectId(_id) }, [
+      { $set: { numeroCliente, nomeCliente, nomeUsuario, password, usinas } },
     ]);
   });
+  console.log('resulte em model: ', result);
   return customer;
 };
 
