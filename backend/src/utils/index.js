@@ -8,7 +8,7 @@ const STATUS_409_CONFLICT = 409;
 const STATUS_422_UNPROCESSABLE_ENTITY = 422;
 
 const messageError = (errorMSN, message) =>
-  `\n       ${errorMSN} \n****** Erro ao ${message} ******\n\n`;
+  `\n       ${errorMSN} \n****** Error ${message} ******\n\n`;
 
 module.exports = {
   STATUS_200_OK,

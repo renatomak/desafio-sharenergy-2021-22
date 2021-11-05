@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import SherenergyContext from "store/context/context";
+import SharenergyContext from "store/context/context";
 import dadosUsina from "store/dadosUsina.json";
 import { CardContainer } from "./Card/styled";
 import { Container, MainContainer } from "./styled";
@@ -10,7 +10,7 @@ import {
 } from "../../../../util/AuxiliaryFunctions";
 
 export default function FinancialStatement() {
-  const { customers } = useContext(SherenergyContext);
+  const { customers } = useContext(SharenergyContext);
 
   return (
     <MainContainer>

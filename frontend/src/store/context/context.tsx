@@ -5,6 +5,7 @@ import dadosUsina from "store/dadosUsina.json";
 import { Customer } from "types/customer";
 import { Usina } from "types/usina";
 import { customerDailyIncome } from "../../util/AuxiliaryFunctions";
+import { fetchGetAllCustomers } from "../requests";
 
 type PropsClientContext = {
   customers: Customer[];
@@ -16,6 +17,7 @@ type PropsClientContext = {
   idCustomer: number;
   setIdCustomer: (data: number) => void;
   getNextId: number;
+  updateListCustomers: Function;
 };
 
 export const initialSateUsina = {
@@ -24,12 +26,13 @@ export const initialSateUsina = {
 };
 
 export const initialStateCliente = {
+  _id: "",
   numeroCliente: 0,
   nomeCliente: "",
+  nomeUsuario: "",
+  password: "",
   rendimento: 0,
-  usinas: [
-    initialSateUsina,
-  ],
+  usinas: [initialSateUsina],
 };
 
 export const DEFAULT_VALUE = {
@@ -42,33 +45,37 @@ export const DEFAULT_VALUE = {
   idCustomer: 0,
   setIdCustomer: (data: number) => {},
   getNextId: 0,
+  updateListCustomers: Function,
 };
 
-const SherenergyContext = createContext<PropsClientContext>(DEFAULT_VALUE);
+const SharenergyContext = createContext<PropsClientContext>(DEFAULT_VALUE);
 
-const SherenergyContextProvider: React.FC = ({ children }) => {
+const SharenergyContextProvider: React.FC = ({ children }) => {
   const [customers, setCustomers] = useState(DEFAULT_VALUE.customers);
   const [customer, setCustomer] = useState(DEFAULT_VALUE.customer);
   const [usina, setUsina] = useState(DEFAULT_VALUE.usina);
   const [idCustomer, setIdCustomer] = useState(DEFAULT_VALUE.idCustomer);
 
+  const updateListCustomers = async () => {
+    const getAllCustomers = await fetchGetAllCustomers();
 
-  const iniciarListaClientes = () => {
-    const customers = dadosClientes.map((item) => {
-      const newCustomer = {...item, rendimento: 0 };
+    const customers = getAllCustomers.map((item: Customer) => {
+      const newCustomer = { ...item, rendimento: 0 };
       return newCustomer;
     });
     const NewCustomers = customerDailyIncome(1, dadosUsina, customers);
+    console.log("GETCUSTOMERS: ", NewCustomers);
     setCustomers(NewCustomers);
   };
 
   useEffect(() => {
-    iniciarListaClientes();
+    updateListCustomers();
   }, []);
 
-  const getNextId = customers.map((item) => item.numeroCliente).sort((a, b) => b - a)[0] + 1;
+  const getNextId =
+    customers.map((item) => item.numeroCliente).sort((a, b) => b - a)[0] + 1;
 
-  useEffect(() => {     
+  useEffect(() => {
     setIdCustomer(getNextId);
   }, [customers, getNextId]);
 
@@ -82,14 +89,15 @@ const SherenergyContextProvider: React.FC = ({ children }) => {
     idCustomer,
     setIdCustomer,
     getNextId,
+    updateListCustomers,
   };
 
   return (
-    <SherenergyContext.Provider value={context}>
+    <SharenergyContext.Provider value={context}>
       {children}
-    </SherenergyContext.Provider>
+    </SharenergyContext.Provider>
   );
 };
 
-export { SherenergyContextProvider };
-export default SherenergyContext;
+export { SharenergyContextProvider };
+export default SharenergyContext;

@@ -9,7 +9,7 @@ import {
   TableRow,
 } from "@material-ui/core";
 import * as React from "react";
-import SherenergyContext from "store/context/context";
+import SharenergyContext from "store/context/context";
 
 interface Column {
   id: "name" | "code" | "usinas";
@@ -37,7 +37,7 @@ function createData(code: string, name: string, usinas: string): Data {
 
 export default function StickyHeadTable() {
   const { customers, setCustomer, setUsina, setIdCustomer } =
-    React.useContext(SherenergyContext);
+    React.useContext(SharenergyContext);
 
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
@@ -66,7 +66,9 @@ export default function StickyHeadTable() {
   });
 
   const selectRow = (data: any) => {
-    const selected = customers.filter((item) => parseInt(data.code) === item.numeroCliente);
+    const selected = customers.filter(
+      (item) => parseInt(data.code) === item.numeroCliente
+    );
     const { usinas } = selected[0];
 
     setCustomer(selected[0]);
@@ -75,8 +77,11 @@ export default function StickyHeadTable() {
   };
 
   return (
-    <Paper sx={{ width: "100%", overflow: "hidden" }} style={{backgroundColor: "rgba(0,0,0,0.3)"}}>
-      <TableContainer sx={{ maxHeight: 440 }} >
+    <Paper
+      sx={{ width: "100%", overflow: "hidden" }}
+      style={{ backgroundColor: "rgba(0,0,0,0.3)" }}
+    >
+      <TableContainer sx={{ maxHeight: 440 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>

@@ -1,30 +1,80 @@
 const {
-  findUserNameModel,
   createModel,
-  readByIdModel,
+  readByNumberCustomer,
+  findUserNameModel,
   updateModel,
   deleteModel,
-} = require("../models");
-const { messageError } = require("../utils");
+  findAllCustomersModel,
+} = require('../models');
 
-const createService = async (customer) => {
+const { messageError } = require('../utils');
+
+const createService = async customer => {
   try {
     const createResult = await createModel(customer);
     return createResult;
   } catch (error) {
-    throw Error(messageError(error.message, "register customer"));
+    throw Error(messageError(error.message, 'register customer'));
   }
 };
 
-const readByIdService = async (id) => {};
+const readByUserNameService = async userName => {
+  try {
+    const getResult = await findUserNameModel(userName);
 
-const updateService = async (customer) => {};
+    return getResult;
+  } catch (error) {
+    throw Error(messageError(error.message, 'read customer'));
+  }
+};
 
-const deleteService = async (id) => {};
+const readAllCustomersService = async _ => {
+  try {
+    const getAllResult = await findAllCustomersModel();
+
+    return getAllResult;
+  } catch (error) {
+    throw Error(messageError(error.message, 'read customers'));
+  }
+};
+
+const readByIdService = async id => {};
+
+const updateService = async customer => {
+  try {
+    const { nomeUsuario } = customer;
+
+    if (nomeUsuario) {
+      const registered = await findUserNameModel(nomeUsuario);
+      console.log('REGISTERED', registered);
+      if (registered && customer?._id != registered?._id) {
+        return { registered: true };
+      }
+    }
+
+    const result = await updateModel(customer);
+    console.log('result em SERVICE: ', result);
+    return result;
+  } catch (error) {
+    throw Error(messageError(error.message, 'updating customer'));
+  }
+};
+
+const deleteService = async id => {
+  try {
+    await deleteModel(id);
+
+    return true;
+  } catch (error) {
+    throw Error(messageError(error.message, 'delete to user'));
+  }
+};
 
 module.exports = {
   createService,
   readByIdService,
+  readByUserNameService,
   updateService,
   deleteService,
+  readAllCustomersService,
 };
