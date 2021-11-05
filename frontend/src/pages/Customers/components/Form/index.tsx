@@ -14,8 +14,6 @@ import { Container } from "./styled";
 
 export default function Form(this: any) {
   const {
-    customers,
-    setCustomers,
     customer,
     setCustomer,
     usina,
@@ -28,7 +26,7 @@ export default function Form(this: any) {
 
   useEffect(() => {
     setCustomer({ ...customer, usinas: [usina], numeroCliente: idCustomer });
-  }, [usina]);
+  }, [customer, idCustomer, setCustomer, usina]);
 
   const handleChangeCliente = (
     e: React.ChangeEvent<HTMLInputElement>

@@ -1,5 +1,4 @@
 import React, { createContext, useEffect, useState } from "react";
-import dadosClientes from "store/dadosClientes.json";
 import dadosUsina from "store/dadosUsina.json";
 
 import { Customer } from "types/customer";
