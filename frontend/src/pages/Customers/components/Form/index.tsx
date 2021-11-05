@@ -44,18 +44,20 @@ export default function Form(this: any) {
   };
 
   const addCliente = async () => {
-    // const { numeroCliente, nomeCliente, nomeUsuario, password, usinas } =
-    //   customer;
+    const { numeroCliente, nomeCliente, nomeUsuario, password, usinas } =
+      customer;
 
-    // // const newCustomer = {
-    // //   numeroCliente,
-    // //   nomeCliente,
-    // //   nomeUsuario,
-    // //   password,
-    // //   usinas,
-    // // };
+    const newCustomer = {
+      numeroCliente,
+      nomeCliente,
+      nomeUsuario,
+      password,
+      usinas,
+    };
 
-    await fetchCreateCustomer(customer);
+    console.log(customer, newCustomer)
+
+    await fetchCreateCustomer(newCustomer);
     await updateListCustomers();
     clearInputs();
   };
