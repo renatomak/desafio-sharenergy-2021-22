@@ -55,31 +55,28 @@ export default function StickyHeadTable() {
 
   const rows = customers?.map(({ numeroCliente, nomeCliente, usinas }) => {
     const participacao = usinas.reduce(
-      (acc, elem) => (acc += " " + elem.percentualDeParticipacao + ","),
+      (acc, elem) => (acc += " " + elem.percentualDeParticipacao + "%, "),
       ""
     );
     return createData(
       String(numeroCliente),
       nomeCliente,
-      participacao.substr(0, participacao.length - 1)
+      participacao.substr(0, participacao.length - 2)
     );
   });
 
   const selectRow = (data: any) => {
-    console.log(data)
+  
     const selected = customers.filter(
-      (item) => parseInt(data.code) === item.numeroCliente
-    );
-    console.log(selected)
-
-    if (selected[0]) {
-      const { usinas } = selected[0];
+      (item) => {
+        return parseInt(data.code) === item.numeroCliente
+      }
+    )[0];
+    if (selected) {
+      const { usinas } = selected;
       setUsina(usinas[0]);
     }
-    
-
-    setCustomer(selected[0]);
-    
+    setCustomer(selected);  
   };
 
   return (

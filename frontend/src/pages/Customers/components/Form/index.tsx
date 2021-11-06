@@ -22,10 +22,6 @@ export default function Form(this: any) {
     updateListCustomers,
   } = useContext(SharenergyContext);
 
-  useEffect(() => {
-    setCustomer({ ...customer, usinas: [usina], numeroCliente: idCustomer });
-  }, [usina]);
-
   const handleChangeCliente = (
     e: React.ChangeEvent<HTMLInputElement>
   ): void => {
@@ -40,22 +36,23 @@ export default function Form(this: any) {
       percentualDeParticipacao: parseInt(value),
       usinaId: 1,
     });
-    setCustomer({ ...customer, usinas: [usina], numeroCliente: idCustomer });
   };
 
+  useEffect(() => {
+    setCustomer({ ...customer, usinas: [ usina] });
+  }, [usina])
+
   const addCliente = async () => {
-    const { numeroCliente, nomeCliente, nomeUsuario, password, usinas } =
+    const { nomeCliente, nomeUsuario, password, usinas } =
       customer;
 
     const newCustomer = {
-      numeroCliente,
+      numeroCliente: idCustomer,
       nomeCliente,
       nomeUsuario,
       password,
       usinas,
     };
-
-    console.log(customer, newCustomer)
 
     await fetchCreateCustomer(newCustomer);
     await updateListCustomers();
