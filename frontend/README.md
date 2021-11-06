@@ -35,3 +35,5 @@ PR do desafio [AQUI](https://github.com/SHARENERGY-OFICIAL/desafio-sharenergy-20
     3 - dentro da pasta raiz do backend, início o projeto com "npm start";
     4 - Dentro da pasta raiz do frontend, início o projeto com "npm start";
 
+# [Video no youtube](https://youtu.be/ZDdjnpIZocE)
+
